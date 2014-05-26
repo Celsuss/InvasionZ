@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{1402e923-aa10-45fa-ada7-55b85a93f731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{355e2773-c197-4c01-be07-56a88a0fc057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{33b92c40-4184-4c47-912f-c39e9e2d4ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{b9788f6d-3260-4046-b339-fbab1fadadd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{dc7c86a8-d8d1-4928-bcc6-f6697211bea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data">
+      <UniqueIdentifier>{3c88b509-f32c-49fc-a606-f4ab71283fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systeme">
+      <UniqueIdentifier>{f2b35501-5b7c-4bf5-aefc-a31bcdd054e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Systeme">
+      <UniqueIdentifier>{4bc937c5-6de5-4900-921b-df6ce38ccffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{889ccda0-5e64-47b9-a776-4615821f5b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{a82618c1-41a3-4580-adf9-bab348bc1300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{95c5aab3-cc15-4b88-b665-31f4a8741cba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{39fa1db2-e14d-4b5c-ae41-424bb19c42c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{73886393-2d18-4c2d-9536-524866b3bf30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Entity">
+      <UniqueIdentifier>{4242bd4e-88f0-4a3d-bce4-52d220cc78b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Weapons">
+      <UniqueIdentifier>{5d9b7c8b-f3e2-46fc-90b9-b9940f1b81f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Weapons">
+      <UniqueIdentifier>{62d67e8f-d418-4edd-b43d-cc6e5ccdca2a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Data.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Systeme</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Systeme</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Source Files\Systeme</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateToMouseComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="AmmoData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Gun.cpp">
+      <Filter>Source Files\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityFactory.cpp">
+      <Filter>Source Files\Systeme</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="IsPlayerData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseKey.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardKey.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Systeme</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicManager.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\GameObjects\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\Systeme</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Header Files\Systeme</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateToMouseComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AmmoData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Gun.h">
+      <Filter>Header Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityFactory.h">
+      <Filter>Header Files\Systeme</Filter>
+    </ClInclude>
+    <ClInclude Include="IsPlayerData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseKey.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardKey.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

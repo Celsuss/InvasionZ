@@ -1,5 +1,6 @@
 #include "ShootComponent.h"
 #include "WeaponData.h"
+#include "AmmoData.h"
 #include "Player.h"
 #include "Weapon.h"
 

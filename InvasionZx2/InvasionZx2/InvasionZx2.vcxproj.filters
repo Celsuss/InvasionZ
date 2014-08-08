@@ -40,9 +40,6 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{889ccda0-5e64-47b9-a776-4615821f5b57}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity">
-      <UniqueIdentifier>{a82618c1-41a3-4580-adf9-bab348bc1300}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Input">
       <UniqueIdentifier>{95c5aab3-cc15-4b88-b665-31f4a8741cba}</UniqueIdentifier>
     </Filter>
@@ -52,14 +49,23 @@
     <Filter Include="Header Files\Graphics">
       <UniqueIdentifier>{73886393-2d18-4c2d-9536-524866b3bf30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameObjects\Entity">
-      <UniqueIdentifier>{4242bd4e-88f0-4a3d-bce4-52d220cc78b0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Weapons">
       <UniqueIdentifier>{5d9b7c8b-f3e2-46fc-90b9-b9940f1b81f5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Weapons">
       <UniqueIdentifier>{62d67e8f-d418-4edd-b43d-cc6e5ccdca2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI Components">
+      <UniqueIdentifier>{3f051609-99ae-4bab-b6df-a2f38e2bdf65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI Components">
+      <UniqueIdentifier>{0a400dff-37b5-40c7-8dff-0562b10cfa4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameStates">
+      <UniqueIdentifier>{271bd00a-9212-4010-b9fd-3550d2effd08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameStates">
+      <UniqueIdentifier>{c125e1f8-f496-4b41-8b9a-ada5a234d8f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,9 +87,6 @@
     <ClCompile Include="GraphicManager.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -95,9 +98,6 @@
     </ClCompile>
     <ClCompile Include="SpriteData.cpp">
       <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Systeme</Filter>
     </ClCompile>
     <ClCompile Include="MoveComponent.cpp">
       <Filter>Source Files\Components</Filter>
@@ -150,6 +150,84 @@
     <ClCompile Include="KeyboardKey.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBarComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared.cpp">
+      <Filter>Source Files\Systeme</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Trail.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnTrailComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="KillAfterTimeComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="IsWeaponData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionDetectionManager.cpp">
+      <Filter>Source Files\Systeme</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexArrayData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source Files\Systeme</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnerComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEffectData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="AIStateComponent.cpp">
+      <Filter>Source Files\AI Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AIState.cpp">
+      <Filter>Source Files\AI Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackState.cpp">
+      <Filter>Source Files\AI Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="TextData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineGun.cpp">
+      <Filter>Source Files\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -167,9 +245,6 @@
     <ClInclude Include="GraphicManager.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files\GameObjects\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
@@ -181,9 +256,6 @@
     </ClInclude>
     <ClInclude Include="SpriteData.h">
       <Filter>Header Files\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header Files\Systeme</Filter>
     </ClInclude>
     <ClInclude Include="MoveComponent.h">
       <Filter>Header Files\Components</Filter>
@@ -235,6 +307,84 @@
     </ClInclude>
     <ClInclude Include="KeyboardKey.h">
       <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBarComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared.h">
+      <Filter>Header Files\Systeme</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Trail.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnTrailComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="KillAfterTimeComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IsWeaponData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionDetectionManager.h">
+      <Filter>Header Files\Systeme</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexArrayData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files\Systeme</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnerComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEffectData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AIStateComponent.h">
+      <Filter>Header Files\AI Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AIState.h">
+      <Filter>Header Files\AI Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackState.h">
+      <Filter>Header Files\AI Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TextData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineGun.h">
+      <Filter>Header Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

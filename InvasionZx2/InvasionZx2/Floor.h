@@ -5,9 +5,6 @@
 
 class Floor : public GameObject{
 public:
-	Floor(std::string texture);
+	Floor(std::string texture, Type type);
 	virtual ~Floor();
-	virtual void update();
-private:
-	SpriteData m_SpriteData;
 };

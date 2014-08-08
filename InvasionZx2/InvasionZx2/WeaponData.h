@@ -13,6 +13,9 @@ public:
 	virtual ~WeaponData();
 	void addWeapon(Weapon* weapon);
 	Weapon* getEquippedWeapon();
+	int getWeaponVectorSize();
+
+	Weapon* getWeapon(int index);
 
 	template<typename w>
 	w* getWeapon(std::string name){
@@ -28,4 +31,3 @@ private:
 	WeaponVector m_WeaponVector;
 	int m_CurrentWeapon;
 };
-

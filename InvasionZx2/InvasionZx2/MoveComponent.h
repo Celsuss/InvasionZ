@@ -11,7 +11,8 @@ public:
 	~MoveComponent();
 	virtual void update(GameObject* gameObject);
 private:
-	void movePlayer(GameObject* gameObject);
+	void checkInput(GameObject* gameObject);
+	void movePlayer(GameObject* gameObject, int direction);
 	void moveObject(GameObject* gameObject);
 };
 

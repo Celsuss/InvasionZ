@@ -1,4 +1,5 @@
 #include "Gun.h"
+#include "Level.h"
 #include "Bullet.h"
 #include "AmmoData.h"
 #include "GameObject.h"
@@ -20,7 +21,7 @@ void Gun::shoot(GameObject* gameObject){
 
 	if (InputManager::isShootKeyPressed()){
 		if (*currentAmmo > 0){
-			fire(currentAmmo, maxAmmo, position, direction);
+			fire(ammoData, currentAmmo, maxAmmo, position, direction);
 		}
 		else{
 			reload(ammoData, m_Name);
@@ -28,6 +29,11 @@ void Gun::shoot(GameObject* gameObject){
 	}	
 }
 
+void Gun::fire(AmmoData* ammoData, int* currentAmmo, const int maxAmmo, sf::Vector2f pos, sf::Vector2f direction){
+	EntityFactory::createGameObject(new Bullet(pos, direction, GameObject::Bullet));
+	*ammoData->getAmmo(m_Name) -= 1;
+}
+
 void Gun::fire(int* currentAmmo, const int maxAmmo, sf::Vector2f pos, sf::Vector2f direction){
-	EntityFactory::createBullet(pos, direction);
+	EntityFactory::createGameObject(new Bullet(pos, direction, GameObject::Bullet));
 }

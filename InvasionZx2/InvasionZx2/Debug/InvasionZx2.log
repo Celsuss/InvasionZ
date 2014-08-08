@@ -1,43 +1,65 @@
-﻿Build started 5/16/2014 1:19:15 PM.
+﻿Build started 8/8/2014 7:32:41 PM.
      1>Project "C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Level.cpp
-         Level.cpp
-     1>c:\users\celsuss\documents\visual studio 2013\projects\invasionzx2\invasionzx2\level.cpp(10): warning C4244: 'initializing' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\celsuss\documents\visual studio 2013\projects\invasionzx2\invasionzx2\level.cpp(11): warning C4244: 'initializing' : conversion from 'unsigned int' to 'float', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt SpriteData.cpp
+         SpriteData.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.lib" /MACHINE:X86 Debug\AmmoData.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.lib" /MACHINE:X86 Debug\AIState.obj
+         Debug\AIStateComponent.obj
+         Debug\AmmoData.obj
+         Debug\AttackState.obj
          Debug\Bullet.obj
+         Debug\CollisionData.obj
+         Debug\CollisionDetectionManager.obj
          Debug\Component.obj
+         Debug\DamageData.obj
          Debug\Data.obj
-         Debug\Entity.obj
+         Debug\Debug.obj
          Debug\EntityFactory.obj
          Debug\Floor.obj
          Debug\Game.obj
          Debug\GameObject.obj
+         Debug\GameState.obj
          Debug\GraphicManager.obj
+         Debug\GUI.obj
          Debug\Gun.obj
+         Debug\HealthBarComponent.obj
+         Debug\HealthData.obj
          Debug\InputManager.obj
          Debug\IsPlayerData.obj
+         Debug\IsWeaponData.obj
          Debug\Key.obj
          Debug\KeyboardKey.obj
+         Debug\KillAfterTimeComponent.obj
          Debug\Level.obj
+         Debug\MachineGun.obj
          Debug\Main.obj
          Debug\MouseKey.obj
          Debug\MoveComponent.obj
          Debug\MovementData.obj
+         Debug\ParticleEffectData.obj
          Debug\Player.obj
          Debug\PositionData.obj
          Debug\RotateToMouseComponent.obj
+         Debug\ShapeData.obj
+         Debug\Shared.obj
          Debug\ShootComponent.obj
+         Debug\SpawnerComponent.obj
+         Debug\Spawner.obj
+         Debug\SpawnTrailComponent.obj
          Debug\SpriteData.obj
+         Debug\TextData.obj
+         Debug\TextureManager.obj
          Debug\TimeManager.obj
+         Debug\Trail.obj
+         Debug\VertexArrayData.obj
          Debug\Wall.obj
          Debug\Weapon.obj
          Debug\WeaponData.obj
+         Debug\Zombie.obj
          InvasionZx2.vcxproj -> C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.exe
      1>Done Building Project "C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.08
+Time Elapsed 00:00:01.11

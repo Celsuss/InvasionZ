@@ -14,12 +14,21 @@ class Component;
 
 class GameObject{
 public:
+	enum Type{
+		Player,
+		Zombie,
+		Bullet,
+		Object,
+		Wall,
+		Other
+	};
+
 	typedef std::vector<Data*>DataVector;
 	typedef std::vector<Component*>ComponentVector;
 
 	GameObject();
 	virtual ~GameObject();
-	virtual void update() = 0;
+	virtual void update();
 	
 	template<typename c>
 	c* getComponent(std::string name){
@@ -45,5 +54,7 @@ public:
 	
 	ComponentVector m_ComponentVector;
 	DataVector m_DataVector;
+	Type m_Type = GameObject::Other;
+	bool m_IsAlive = true;
 private:
 };

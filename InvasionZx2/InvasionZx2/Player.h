@@ -5,10 +5,6 @@
 
 class Player : public GameObject{
 public:
-	Player(sf::Vector2f pos);
-	Player(float x, float y);
+	Player(sf::Vector2f pos, Type type);
 	virtual ~Player();
-	virtual void update();
-private:
-	
 };

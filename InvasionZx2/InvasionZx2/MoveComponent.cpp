@@ -16,15 +16,32 @@ MoveComponent::~MoveComponent(){}
 
 void MoveComponent::update(GameObject* gameObject){
 	if (gameObject->getData<IsPlayerData>("IsPlayerData") != nullptr)
-		movePlayer(gameObject);
+		checkInput(gameObject);
 	else
 		moveObject(gameObject);
 }
 
-void MoveComponent::movePlayer(GameObject* gameObject){
-	if (InputManager::isUpKeyDown()){
-		moveObject(gameObject);
-	}
+void MoveComponent::checkInput(GameObject* gameObject){
+	if (InputManager::isUpKeyDown())
+		movePlayer(gameObject, 1);
+	else if (InputManager::isDownKeyDown())
+		movePlayer(gameObject, -1);
+}
+
+void MoveComponent::movePlayer(GameObject* gameObject, int direction){
+	PositionData* posData = gameObject->getData<PositionData>("PositionData");
+	MovementData* speedData = gameObject->getData<MovementData>("MovementData");
+	SpriteData* spriteData = gameObject->getData<SpriteData>("SpriteData");
+
+	sf::Vector2f* pos = posData->getPosition();
+	sf::Vector2f* rotation = speedData->getDirection();
+	float* speed = speedData->getMovementSpeed();
+	float deltaTime = TimeManager::getDeltaTime();
+
+	pos->x += (*speed * rotation->x * deltaTime) * direction;
+	pos->y += (*speed * rotation->y * deltaTime) * direction;
+
+	spriteData->getSprite()->setPosition(*pos);
 }
 
 void MoveComponent::moveObject(GameObject* gameObject){

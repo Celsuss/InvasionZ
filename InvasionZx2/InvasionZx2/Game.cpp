@@ -1,7 +1,9 @@
 #include "GraphicManager.h"
 #include "InputManager.h"
 #include "TimeManager.h"
+#include "GameState.h"
 #include "Level.h"
+#include "Debug.h"
 #include "Game.h"
 
 Game::Game(){}
@@ -14,19 +16,21 @@ void Game::start(){
 
 void Game::update(){
 	GraphicManager::initialize();
-	Level level;
+	m_CurrentGameState = new Level();
 
 	while (GraphicManager::getWindow()->isOpen()){
 		handleEvents();
 
 		//----
+		Debug::clear();
 		//Time
 		TimeManager::update();
 		//User input
 		InputManager::update();
-		//Update
-		level.update();
+		//Update game state
+		m_CurrentGameState->update();
 		//Render
+		Debug::update();
 		GraphicManager::update();
 		//----
 	}

@@ -1,5 +1,7 @@
 #pragma once
 
+class GameState;
+
 class Game{
 public:
 	Game();
@@ -8,5 +10,7 @@ public:
 private:
 	void update();
 	void handleEvents();
+
+	GameState* m_CurrentGameState;
 };
 

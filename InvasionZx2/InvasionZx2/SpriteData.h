@@ -1,12 +1,12 @@
 #pragma once
-#include "Data.h"
+#include "DrawableData.h"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/Texture.hpp"
 
 class PositionData;
 class MovementData;
 
-class SpriteData : public Data{
+class SpriteData : public DrawableData{
 public:
 	enum Layer{
 		Background,
@@ -20,7 +20,7 @@ public:
 	SpriteData(std::string texture, Layer layer = Layer::Normal);
 	virtual ~SpriteData();
 
-	void draw();
+	virtual void draw();
 	sf::Sprite* getSprite();
 	Layer* getLayer();
 private:

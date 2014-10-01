@@ -11,24 +11,39 @@
 #include "ShootComponent.h"
 #include "HealthBarComponent.h"
 #include "SpawnTrailComponent.h"
+#include "ChangeWeaponComponent.h"
 
 Player::Player(sf::Vector2f pos, Type type){
 	m_Type = type;
 
-	m_DataVector.push_back(new MovementData(100));
-	m_DataVector.push_back(new PositionData(pos));
-	m_DataVector.push_back(new SpriteData("Player", getData<PositionData>("PositionData")));
-	m_DataVector.push_back(new IsPlayerData());
-	m_DataVector.push_back(new WeaponData());
-	m_DataVector.push_back(new AmmoData());
-	m_DataVector.push_back(new CollisionData(CollisionData::Circle));
-	m_DataVector.push_back(new HealthData(100));
+	MovementData* movementData = new MovementData(100);
+	PositionData* positionData = new PositionData(pos);
+	SpriteData* spriteData = new SpriteData("player", positionData);
+	IsPlayerData* isPlayerData = new IsPlayerData();
+	WeaponData* weaponData = new WeaponData();
+	AmmoData* ammoData = new AmmoData();
+	CollisionData* collisionData = new CollisionData(CollisionData::Circle);
+	HealthData* healthData = new HealthData(100);
 
-	m_ComponentVector.push_back(new RotateToMouseComponent());
-	m_ComponentVector.push_back(new MoveComponent());
-	m_ComponentVector.push_back(new ShootComponent());
-	m_ComponentVector.push_back(new HealthBarComponent());
-	//m_ComponentVector.push_back(new SpawnTrailComponent());
+	m_DataVector.push_back(movementData);
+	m_DataVector.push_back(positionData);
+	m_DataVector.push_back(spriteData);
+	m_DataVector.push_back(isPlayerData);
+	m_DataVector.push_back(weaponData);
+	m_DataVector.push_back(ammoData);
+	m_DataVector.push_back(collisionData);
+	m_DataVector.push_back(healthData);
+
+	m_ComponentVector.push_back(new RotateToMouseComponent(spriteData, movementData));
+	m_ComponentVector.push_back(new MoveComponent(spriteData, positionData, movementData, isPlayerData));
+	m_ComponentVector.push_back(new ShootComponent(weaponData));
+	m_ComponentVector.push_back(new HealthBarComponent(healthData, positionData));
+	m_ComponentVector.push_back(new ChangeWeaponComponent(weaponData));
+	//m_ComponentVector.push_back(new SpawnTrailComponent(positionData));
+
+	setDrawableData();
 }
 
 Player::~Player(){}
+
+void Player::addCollision(GameObject* obj){}

@@ -6,5 +6,6 @@ class Trail : public GameObject{
 public:
 	Trail(sf::Vector2f pos, Type type);
 	virtual ~Trail();
+	virtual void addCollision(GameObject* obj);
 };
 

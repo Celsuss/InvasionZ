@@ -5,5 +5,5 @@ class Spawner : public GameObject{
 public:
 	Spawner(sf::Vector2f pos, Type type);
 	virtual ~Spawner();
+	virtual void addCollision(GameObject* obj);
 };
-

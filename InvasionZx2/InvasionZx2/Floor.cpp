@@ -7,6 +7,10 @@ Floor::Floor(std::string texture, Type type){
 	m_Type = type;
 
 	m_DataVector.push_back(new SpriteData(texture, SpriteData::Background));
+
+	setDrawableData();
 }
 
 Floor::~Floor(){}
+
+void Floor::addCollision(GameObject* obj){}

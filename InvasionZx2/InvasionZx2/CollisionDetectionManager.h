@@ -1,22 +1,31 @@
 #pragma once
 #include "CollisionData.h"
+#include <vector>
 
+class Level;
 class GameObject;
 
 class CollisionDetectionManager{
 public:
+	typedef std::vector<GameObject*>GameObjectCollisionVector;
+
 	static CollisionDetectionManager* getInstance();
 
-	static void collisionDetection(GameObject* obj1, GameObject* obj2, CollisionData::CollisionShape* shape1, CollisionData::CollisionShape* shape2);
+	static void collisionDetection(Level* level);
+	static void addGameObject(GameObject* obj);
 private:
 	CollisionDetectionManager();
 	~CollisionDetectionManager();
 	static CollisionDetectionManager* m_Instance;
 
-	static void circleCircleCollision(GameObject* obj1, GameObject* obj2);
-	static void circleBoxCollision(GameObject* circleObj1, GameObject* rectObj2);
-	static void boxBoxCollision(GameObject* obj1, GameObject* obj2);
+	static void checkShapes(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2);
+	static bool checkType(GameObject* obj1, GameObject* obj2);
 
-	static bool weaponCollision(GameObject* obj1, GameObject* obj2);
+	static void circleCircleCollision(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2);
+	static void circleBoxCollision(GameObject* circleObj1, GameObject* rectObj2, CollisionData* collisionData1, CollisionData* collisionData2);
+	static void boxBoxCollision(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2);
+
+	static bool isPhysicalColliders(CollisionData* collisionData1, CollisionData* collisionData2);
+
+	GameObjectCollisionVector m_GameObjectVector;
 };
-

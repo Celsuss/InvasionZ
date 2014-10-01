@@ -7,4 +7,5 @@ class Floor : public GameObject{
 public:
 	Floor(std::string texture, Type type);
 	virtual ~Floor();
+	virtual void addCollision(GameObject* obj);
 };

@@ -7,10 +7,12 @@ public:
 		Box
 	};
 
-	CollisionData(CollisionShape shape);
+	CollisionData(CollisionShape shape, bool isPhysicalCollider = true);
 	virtual ~CollisionData();
 
 	CollisionShape* getShape();
+	bool getIsPhysicalCollider();
 private:
 	CollisionShape m_Shape;
+	bool m_IsPhysicalCollider;
 };

@@ -6,6 +6,7 @@
 #include "Data.h"
 #include "MovementData.h"
 #include "PositionData.h"
+#include "DrawableData.h"
 #include "SpriteData.h"
 #include <type_traits>
 
@@ -20,6 +21,7 @@ public:
 		Bullet,
 		Object,
 		Wall,
+		Item,
 		Other
 	};
 
@@ -28,7 +30,13 @@ public:
 
 	GameObject();
 	virtual ~GameObject();
+	virtual void setDrawableData();
 	virtual void update();
+	virtual void addCollision(GameObject* obj) = 0;
+	virtual void kill();
+
+	virtual bool getIsAlive() const;
+	virtual Type getType() const;
 	
 	template<typename c>
 	c* getComponent(std::string name){
@@ -54,7 +62,8 @@ public:
 	
 	ComponentVector m_ComponentVector;
 	DataVector m_DataVector;
+protected:
+	DrawableData* m_DrawableData;
 	Type m_Type = GameObject::Other;
 	bool m_IsAlive = true;
-private:
 };

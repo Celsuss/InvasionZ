@@ -1,6 +1,7 @@
 #include "WeaponData.h"
-#include "Gun.h"
 #include "MachineGun.h"
+#include "Gun.h"
+#include "GUI.h"
 
 WeaponData::WeaponData(){
 	m_Name = "WeaponData";
@@ -8,15 +9,20 @@ WeaponData::WeaponData(){
 
 	Gun* gun = new Gun();
 	addWeapon(gun);
-
-	//MachineGun* machineGun = new MachineGun();
-	//addWeapon(machineGun);
 }
 
 WeaponData::~WeaponData(){}
 
 void WeaponData::addWeapon(Weapon* weapon){
 	m_WeaponVector.push_back(weapon);
+}
+
+void WeaponData::changeCurrentWeapon(int index){
+	index--;
+	if (index < m_WeaponVector.size()){
+		m_CurrentWeapon = index;
+		GUI::setequippedWeapon(m_WeaponVector[m_CurrentWeapon]->getName());
+	}
 }
 
 Weapon* WeaponData::getEquippedWeapon(){

@@ -7,19 +7,22 @@
 #include "Player.h"
 #include <iostream>
 
-RotateToMouseComponent::RotateToMouseComponent(){
+RotateToMouseComponent::RotateToMouseComponent(SpriteData* spriteData, MovementData* movementData){
 	m_Name = "RotateToMouseComponent";
+
+	m_SpriteData = spriteData;
+	m_MovementData = movementData;
 }
 
 RotateToMouseComponent::~RotateToMouseComponent(){}
 
 void RotateToMouseComponent::update(GameObject* gameObject){
-	rotateSprite(gameObject->getData<SpriteData>("SpriteData"));
-	rotateMovement(gameObject->getData<SpriteData>("SpriteData"), gameObject->getData<MovementData>("MovementData"));
+	rotateSprite();
+	rotateMovement();
 }
 
-void RotateToMouseComponent::rotateSprite(SpriteData* spriteData){
-	sf::Vector2f pos1 = spriteData->getSprite()->getPosition();
+void RotateToMouseComponent::rotateSprite(){
+	sf::Vector2f pos1 = m_SpriteData->getSprite()->getPosition();
 
 	sf::Vector2f pos2;
 	pos2.x = sf::Mouse::getPosition().x - GraphicManager::getWindow()->getPosition().x;
@@ -27,12 +30,11 @@ void RotateToMouseComponent::rotateSprite(SpriteData* spriteData){
 
 	float angle = std::atan2(pos1.y - pos2.y, pos1.x - pos2.x)*convertToDegrees;
 
-
-	spriteData->getSprite()->setRotation(angle);
+	m_SpriteData->getSprite()->setRotation(angle);
 }
 
-void RotateToMouseComponent::rotateMovement(SpriteData* spriteData, MovementData* movementData){
-	sf::Vector2f pos1 = spriteData->getSprite()->getPosition();
+void RotateToMouseComponent::rotateMovement(){
+	sf::Vector2f pos1 = m_SpriteData->getSprite()->getPosition();
 	sf::Vector2f pos2 = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*GraphicManager::getWindow()));
 
 	sf::Vector2f deltaPos = pos2 - pos1;
@@ -41,5 +43,5 @@ void RotateToMouseComponent::rotateMovement(SpriteData* spriteData, MovementData
 	deltaPos.x = deltaPos.x * (1 / deltaDist);
 	deltaPos.y = deltaPos.y * (1 / deltaDist);
 
-	*movementData->getDirection() = deltaPos;
+	*m_MovementData->getDirection() = deltaPos;
 }

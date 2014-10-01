@@ -1,13 +1,17 @@
 #include "CollisionDetectionManager.h"
+#include "VertexArrayData.h"
 #include "PositionData.h"
 #include "IsWeaponData.h"
 #include "IsPlayerData.h"
+#include "ItemManager.h"
 #include "TimeManager.h"
 #include "GameObject.h"
 #include "SpriteData.h"
 #include "HealthData.h"
 #include "DamageData.h"
+#include "ItemData.h"
 #include "Shared.h"
+#include "Level.h"
 
 CollisionDetectionManager* CollisionDetectionManager::m_Instance = new CollisionDetectionManager();
 
@@ -15,16 +19,50 @@ CollisionDetectionManager::CollisionDetectionManager(){}
 
 CollisionDetectionManager::~CollisionDetectionManager(){}
 
-void CollisionDetectionManager::collisionDetection(GameObject* obj1, GameObject* obj2, CollisionData::CollisionShape* shape1, CollisionData::CollisionShape* shape2){
-	if (*shape1 == CollisionData::Circle && *shape2 == CollisionData::Circle)
-		circleCircleCollision(obj1, obj2);
-	else if (*shape1 == CollisionData::Circle && *shape2 == CollisionData::Box)
-		circleBoxCollision(obj1, obj2);
-	else if (*shape2 == CollisionData::Box && *shape2 == CollisionData::Box)
-		boxBoxCollision(obj1, obj2);
+CollisionDetectionManager* CollisionDetectionManager::getInstance(){
+	return m_Instance;
 }
 
-void CollisionDetectionManager::circleCircleCollision(GameObject* obj1, GameObject* obj2){
+void CollisionDetectionManager::collisionDetection(Level* level){
+	for (auto i = getInstance()->m_GameObjectVector.begin(); i != getInstance()->m_GameObjectVector.end(); i++){
+		if ((*i)->getData<CollisionData>("CollisionData") != nullptr){
+			CollisionData* collisionData1 = (*i)->getData<CollisionData>("CollisionData");
+			for (int j = 0; j < level->getGameObjectVectorSize(); j++){
+				GameObject* i2 = level->getGameObject(j);
+				if (*i != i2){
+					if (i2->getData<CollisionData>("CollisionData") != nullptr){
+						CollisionData* collisionData2 = i2->getData<CollisionData>("CollisionData");
+
+						if (checkType(*i, i2))
+							CollisionDetectionManager::checkShapes(*i, i2, collisionData1, collisionData2);
+					}
+				}
+			}
+		}
+	}
+	getInstance()->m_GameObjectVector.clear();
+}
+
+void CollisionDetectionManager::addGameObject(GameObject* obj){
+	getInstance()->m_GameObjectVector.push_back(obj);
+}
+
+bool CollisionDetectionManager::checkType(GameObject* obj1, GameObject* obj2){
+	if (obj1->getType() == GameObject::Bullet && obj2->getType() == GameObject::Bullet)
+		return false;
+	return true;
+}
+
+void CollisionDetectionManager::checkShapes(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2){
+	if (*collisionData1->getShape() == CollisionData::Circle && *collisionData2->getShape() == CollisionData::Circle)
+		circleCircleCollision(obj1, obj2, collisionData1, collisionData2);
+	else if (*collisionData1->getShape() == CollisionData::Circle && *collisionData2->getShape() == CollisionData::Box)
+		circleBoxCollision(obj1, obj2, collisionData1, collisionData2);
+	else if (*collisionData1->getShape() == CollisionData::Box && *collisionData2->getShape() == CollisionData::Box)
+		boxBoxCollision(obj1, obj2, collisionData1, collisionData2);
+}
+
+void CollisionDetectionManager::circleCircleCollision(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2){
 	PositionData* obj1PositionData = obj1->getData<PositionData>("PositionData");
 	MovementData* obj1Movementdata = obj1->getData<MovementData>("MovementData");
 	SpriteData* obj1SpriteData = obj1->getData<SpriteData>("SpriteData");
@@ -49,7 +87,10 @@ void CollisionDetectionManager::circleCircleCollision(GameObject* obj1, GameObje
 	if ((deltaX * deltaX) + (deltaY * deltaY) > (r1 + r2) * (r1 + r2))	//No collision
 		return;
 
-	if (weaponCollision(obj1, obj2))	//Bullet collision
+	obj1->addCollision(obj2);
+	obj2->addCollision(obj1);
+
+	if (!isPhysicalColliders(collisionData1, collisionData2))
 		return;
 
 	float deltaTime = TimeManager::getDeltaTime();
@@ -68,99 +109,65 @@ void CollisionDetectionManager::circleCircleCollision(GameObject* obj1, GameObje
 	obj2SpriteData->getSprite()->setPosition(*obj2PositionData->getPosition());
 }
 
-void CollisionDetectionManager::circleBoxCollision(GameObject* circleObj1, GameObject* rectObj2){
-	float circleObj1PosX = circleObj1->getData<SpriteData>("SpriteData")->getSprite()->getPosition().x;
-	float circleObj1PosY = circleObj1->getData<SpriteData>("SpriteData")->getSprite()->getPosition().y;
-	float rectObj2PosX = rectObj2->getData<SpriteData>("SpriteData")->getSprite()->getPosition().x;
-	float rectObj2PosY = rectObj2->getData<SpriteData>("SpriteData")->getSprite()->getPosition().y;
+void CollisionDetectionManager::circleBoxCollision(GameObject* circleObj1, GameObject* rectObj2, CollisionData* collisionData1, CollisionData* collisionData2){
+	PositionData* circlePositionData = circleObj1->getData<PositionData>("PositionData");
+	PositionData* rectPositionData = rectObj2->getData<PositionData>("PositionData");
 
-	float radius = circleObj1->getData<SpriteData>("SpriteData")->getSprite()->getLocalBounds().width / 2;
-	float width = rectObj2->getData<SpriteData>("SpriteData")->getSprite()->getLocalBounds().width;
-	float height = rectObj2->getData<SpriteData>("SpriteData")->getSprite()->getLocalBounds().height;
+	SpriteData* spriteData = circleObj1->getData<SpriteData>("SpriteData");
+	VertexArrayData* vertexArrayData = rectObj2->getData<VertexArrayData>("VertexArrayData");
 
-	float deltaX = rectObj2PosX - circleObj1PosX;
-	float deltaY = rectObj2PosY - circleObj1PosY;
+	sf::Vector2f circlePos = *circlePositionData->getPosition();
+	sf::Vector2f linePos = *rectPositionData->getPosition();
 
-	if (std::abs(deltaX) > (width / 2 + radius))	//No collision
+	sf::Vector2f localCirclePos = circlePos - linePos;
+	sf::Vector2f localLinePos;
+	localLinePos.x = vertexArrayData->getVertexArray()->getBounds().width;
+	localLinePos.y = vertexArrayData->getVertexArray()->getBounds().height;
+
+	float localCirclePosXLinePos = (localCirclePos.x * localLinePos.x) + (localCirclePos.y * localLinePos.y);
+	float localLinePosX2 = (localLinePos.x * localLinePos.x) + (localLinePos.y * localLinePos.y);
+
+	sf::Vector2f projection = (localCirclePosXLinePos / localLinePosX2) * localLinePos;
+	float radius = spriteData->getSprite()->getLocalBounds().width / 2;
+
+	if (!isPhysicalColliders(collisionData1, collisionData2))
 		return;
-	if (std::abs(deltaY) > (height / 2 + radius))	//No collision
-		return;
 
-	if (circleObj1->getData<IsWeaponData>("IsWeaponData") != nullptr){	//Bullet collide with wall
-		circleObj1->m_IsAlive = false;
-		return;
+	if (localLinePos.x == 0){
+		float deltaX = circlePos.x - linePos.x;
+		if (deltaX < radius && (projection.x - localCirclePos.x) < radius){			//Collision
+			
+			sf::Vector2f move(radius - std::abs(deltaX), 0);
+			if (circlePos.x < linePos.x)
+				move.x = -move.x;
+
+			*circlePositionData->getPosition() += move;
+		}
+	}
+	else if (localLinePos.y == 0){
+		float deltaY = circlePos.y - linePos.y;
+		if (deltaY < radius && (projection.y - localCirclePos.y) < radius){			//Collision
+
+			sf::Vector2f move(0, radius - std::abs(deltaY));
+			if (circlePos.y < linePos.y)
+				move.y = -move.y;
+
+			*circlePositionData->getPosition() += move;
+		}
 	}
 
-	float obj1Bottom = circleObj1PosY + radius;
-	float obj1Right = circleObj1PosX + radius;
-	float obj2Bottom = rectObj2PosY + (height / 2);
-	float obj2Right = rectObj2PosX + (width / 2);
-
-	float topCollision = std::abs(obj1Bottom - (rectObj2PosY - (height / 2)));
-	float rightCollision = std::abs(obj2Right - (circleObj1PosX - radius));
-	float bottomCollision = std::abs(obj2Bottom - (circleObj1PosY - radius));
-	float leftCollision = std::abs(obj1Right - (rectObj2PosX - (width / 2)));
-
-	if (topCollision < bottomCollision && topCollision < leftCollision && topCollision < rightCollision){
-		//Top collision
-		float move = deltaY - (height / 2) - radius;
-		circleObj1->getData<PositionData>("PositionData")->getPosition()->y += move;
-	}
-	else if (rightCollision < bottomCollision && rightCollision < leftCollision && rightCollision < topCollision){
-		//Right collision
-		float move = deltaX + (width / 2) + radius;
-		circleObj1->getData<PositionData>("PositionData")->getPosition()->x += move;
-	}
-	else if (bottomCollision < topCollision && bottomCollision < leftCollision && bottomCollision < rightCollision){
-		//Bottom collision
-		float move = deltaY + (height / 2) + radius;
-		circleObj1->getData<PositionData>("PositionData")->getPosition()->y += move;
-	}
-	else if (leftCollision < topCollision && leftCollision < bottomCollision && leftCollision < rightCollision){
-		//Left collision
-		float move = deltaX - (width / 2) - radius;
-		circleObj1->getData<PositionData>("PositionData")->getPosition()->x += move;
-	}
+	/*sf::Vector2f delta(projection.x, projection.y);
+	if (radius > std::sqrt((delta.x * delta.x) + (delta.y * delta.y))){
+	std::cout << "\nWall collision";
+	}*/
 }
 
-void CollisionDetectionManager::boxBoxCollision(GameObject* obj1, GameObject* obj2){
+void CollisionDetectionManager::boxBoxCollision(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2){
 
 }
 
-bool CollisionDetectionManager::weaponCollision(GameObject* obj1, GameObject* obj2){
-	//No weapon collision so return false
-	if (obj1->m_Type == GameObject::Player && obj2->m_Type == GameObject::Zombie)
+bool CollisionDetectionManager::isPhysicalColliders(CollisionData* collisionData1, CollisionData* collisionData2){
+	if (!collisionData1->getIsPhysicalCollider() || !collisionData2->getIsPhysicalCollider())
 		return false;
-	if (obj2->m_Type == GameObject::Zombie && obj1->m_Type == GameObject::Player)
-		return false;
-
-	//Player dont collide with bullet so return true
-	if (obj1->m_Type == GameObject::Player || obj2->m_Type == GameObject::Player)
-		return true;
-
-	IsWeaponData* obj1IsWeaponData = obj1->getData<IsWeaponData>("IsWeaponData");
-	IsWeaponData* obj2IsWeaponData = obj2->getData<IsWeaponData>("IsWeaponData");
-
-	if (obj1IsWeaponData != nullptr && obj2IsWeaponData != nullptr)		//Dont collide two IsWeaponData
-		return false;
-
-	if (obj1IsWeaponData != nullptr){
-		float* health = obj2->getData<HealthData>("HealthData")->getHealth();
-		float damage = obj1->getData<DamageData>("DamageData")->getDamage();
-		*health = *health - damage;
-
-		if (*health <= 0)
-			obj2->m_IsAlive = false;
-		obj1->m_IsAlive = false;
-		return true;
-	}
-	if (obj2IsWeaponData != nullptr){
-		float* health = obj1->getData<HealthData>("HealthData")->getHealth();
-		float damage = obj2->getData<DamageData>("DamageData")->getDamage();
-		*health = *health - damage;
-		obj2->m_IsAlive = false;
-		return true;
-	}
-
-	return false;
+	return true;
 }

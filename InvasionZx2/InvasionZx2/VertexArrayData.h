@@ -1,8 +1,8 @@
 #pragma once
-#include "Data.h"
+#include "DrawableData.h"
 #include "SFML/Graphics/VertexArray.hpp"
 
-class VertexArrayData : public Data {
+class VertexArrayData : public DrawableData{
 public:
 	enum Layer{
 		Background,
@@ -11,6 +11,8 @@ public:
 	};
 	VertexArrayData(sf::VertexArray* vaAray, Layer layer = Layer::Normal);
 	virtual ~VertexArrayData();
+
+	virtual void draw();
 
 	sf::VertexArray* getVertexArray();
 	Layer* getLayer();

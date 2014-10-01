@@ -10,6 +10,6 @@ KillAfterTimeComponent::~KillAfterTimeComponent(){}
 
 void KillAfterTimeComponent::update(GameObject* gameObject){
 	if (m_Clock.getElapsedTime().asSeconds() > m_LifeTime.asSeconds()){
-		gameObject->m_IsAlive = false;
+		gameObject->kill();
 	}
 }

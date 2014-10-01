@@ -12,6 +12,10 @@ Gun::Gun(){
 
 Gun::~Gun(){}
 
+bool Gun::addItem(){
+	return true;
+}
+
 void Gun::shoot(GameObject* gameObject){
 	AmmoData* ammoData = gameObject->getData<AmmoData>("AmmoData");
 	int maxAmmo = ammoData->getMaxAmmo(m_Name);

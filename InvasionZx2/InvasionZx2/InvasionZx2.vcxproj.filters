@@ -67,6 +67,24 @@
     <Filter Include="Source Files\GameStates">
       <UniqueIdentifier>{c125e1f8-f496-4b41-8b9a-ada5a234d8f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{a976feb8-97c2-423c-baaa-55da6fa294e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{126f16bd-8c2e-4a6f-bb31-acad99ad0b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Grid">
+      <UniqueIdentifier>{d7a4d7ca-83a8-466a-b737-58f2a563016b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Grid">
+      <UniqueIdentifier>{a3622e8c-43ec-48d8-88a5-0761ae28c267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects Items">
+      <UniqueIdentifier>{d3bb3843-c0b5-4922-beb0-ed4b74d0c633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects Items">
+      <UniqueIdentifier>{660406c3-2753-4cbc-b5f1-760653d69baa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -228,6 +246,42 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="ItemManager.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeWeaponComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateToDirectionComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthPotion.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="GridManager.cpp">
+      <Filter>Source Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="GridNode.cpp">
+      <Filter>Source Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineGunItem.cpp">
+      <Filter>Source Files\GameObjects Items</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthPotionItem.cpp">
+      <Filter>Source Files\GameObjects Items</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerPickupItem.cpp">
+      <Filter>Source Files\GameObjects Items</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -385,6 +439,42 @@
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeWeaponComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateToDirectionComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthPotion.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="GridManager.h">
+      <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="GridNode.h">
+      <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthPotionItem.h">
+      <Filter>Header Files\GameObjects Items</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineGunItem.h">
+      <Filter>Header Files\GameObjects Items</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerPickupItem.h">
+      <Filter>Header Files\GameObjects Items</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableData.h">
+      <Filter>Header Files\Data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

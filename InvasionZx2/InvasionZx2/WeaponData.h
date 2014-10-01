@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-
 class WeaponData : public Data{
 public:
 	typedef std::vector<Weapon*>WeaponVector;
@@ -12,6 +11,7 @@ public:
 	WeaponData();
 	virtual ~WeaponData();
 	void addWeapon(Weapon* weapon);
+	void changeCurrentWeapon(int index);
 	Weapon* getEquippedWeapon();
 	int getWeaponVectorSize();
 

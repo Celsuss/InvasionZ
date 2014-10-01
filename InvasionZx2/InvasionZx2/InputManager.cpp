@@ -14,11 +14,31 @@ InputManager::InputManager(){
 	m_DownKey = new KeyboardKey(sf::Keyboard::S);
 	m_RightKey = new KeyboardKey(sf::Keyboard::D);
 
+	m_OneKey = new KeyboardKey(sf::Keyboard::Num1);
+	m_TwoKey = new KeyboardKey(sf::Keyboard::Num2);
+	m_ThreeKey = new KeyboardKey(sf::Keyboard::Num3);
+	m_FourKey = new KeyboardKey(sf::Keyboard::Num4);
+	m_FiveKey = new KeyboardKey(sf::Keyboard::Num5);
+	m_SixKey = new KeyboardKey(sf::Keyboard::Num6);
+	m_SevenKey = new KeyboardKey(sf::Keyboard::Num7);
+	m_EightKey = new KeyboardKey(sf::Keyboard::Num8);
+	m_NineKey = new KeyboardKey(sf::Keyboard::Num9);
+
 	m_KeyVector.push_back(m_ShootKey);
 	m_KeyVector.push_back(m_UpKey);
 	m_KeyVector.push_back(m_LeftKey);
 	m_KeyVector.push_back(m_DownKey);
 	m_KeyVector.push_back(m_RightKey);
+
+	m_KeyVector.push_back(m_OneKey);
+	m_KeyVector.push_back(m_TwoKey);
+	m_KeyVector.push_back(m_ThreeKey);
+	m_KeyVector.push_back(m_FourKey);
+	m_KeyVector.push_back(m_FiveKey);
+	m_KeyVector.push_back(m_SixKey);
+	m_KeyVector.push_back(m_SevenKey);
+	m_KeyVector.push_back(m_EightKey);
+	m_KeyVector.push_back(m_NineKey);
 }
 
 InputManager::~InputManager(){}
@@ -51,6 +71,42 @@ const bool InputManager::isRightKeyPressed(){
 
 const bool InputManager::isShootKeyPressed(){
 	return getInstance()->m_ShootKey->isKeyPressed();
+}
+
+const bool InputManager::isOneKeyPressed(){
+	return getInstance()->m_OneKey->isKeyPressed();
+}
+
+const bool InputManager::isTwoKeyPressed(){
+	return getInstance()->m_TwoKey->isKeyPressed();
+}
+
+const bool InputManager::isThreeKeyPressed(){
+	return getInstance()->m_ThreeKey->isKeyPressed();
+}
+
+const bool InputManager::isFourKeyPressed(){
+	return getInstance()->m_FourKey->isKeyPressed();
+}
+
+const bool InputManager::isFiveKeyPressed(){
+	return getInstance()->m_FiveKey->isKeyPressed();
+}
+
+const bool InputManager::isSixKeyPressed(){
+	return getInstance()->m_SixKey->isKeyPressed();
+}
+
+const bool InputManager::isSevenKeyPressed(){
+	return getInstance()->m_SevenKey->isKeyPressed();
+}
+
+const bool InputManager::isEightKeyPressed(){
+	return getInstance()->m_EightKey->isKeyPressed();
+}
+
+const bool InputManager::isNineKeyPressed(){
+	return getInstance()->m_NineKey->isKeyPressed();
 }
 
 const bool InputManager::isUpKeyDown(){

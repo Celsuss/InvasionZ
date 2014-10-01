@@ -6,11 +6,13 @@ class MovementData;
 
 class RotateToMouseComponent : public Component{
 public:
-	RotateToMouseComponent();
+	RotateToMouseComponent(SpriteData* spriteData, MovementData* movementData);
 	virtual ~RotateToMouseComponent();
 	virtual void update(GameObject* gameObject);
 private:
-	void rotateSprite(SpriteData* spriteData);
-	void rotateMovement(SpriteData* spriteData, MovementData* movementData);
-};
+	void rotateSprite();
+	void rotateMovement();
 
+	SpriteData* m_SpriteData;
+	MovementData* m_MovementData;
+};

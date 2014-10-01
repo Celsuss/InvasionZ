@@ -4,6 +4,9 @@ AmmoData::AmmoData(){
 	m_Name = "AmmoData";
 	m_AmmoMap.insert(std::pair<std::string, int>("Gun", 10));
 	m_MaxAmmoMap.insert(std::pair<std::string, int>("Gun", 20));
+
+	m_AmmoMap.insert(std::pair<std::string, int>("MachineGun", 10));
+	m_MaxAmmoMap.insert(std::pair<std::string, int>("MachineGun", 20));
 }
 
 AmmoData::~AmmoData(){}

@@ -3,13 +3,16 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 
 class ShapeData;
+class HealthData;
+class PositionData;
 
 class HealthBarComponent : public Component{
 public:
-	HealthBarComponent();
+	HealthBarComponent(HealthData* healthData, PositionData* positionData);
 	virtual ~HealthBarComponent();
 	virtual void update(GameObject* gameObject);
 private:
+	bool checkIfAlive(GameObject* gameObject);
 	void setPosition(GameObject* gameObject);
 	void updateHealthBar(GameObject* gameObject);
 	void updateHealthBarColor(float healthPercentages);
@@ -17,4 +20,7 @@ private:
 
 	ShapeData* m_HealthBarBoxShape;
 	ShapeData* m_HealthBarShape;
+
+	HealthData* m_HealthData;
+	PositionData* m_PositionData;
 };

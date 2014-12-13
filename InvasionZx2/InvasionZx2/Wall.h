@@ -1,4 +1,5 @@
 #pragma once
+#include "LuaConfig.h"
 #include "GameObject.h"
 #include "SpriteData.h"
 #include "PositionData.h"
@@ -9,7 +10,7 @@
 
 class Wall : public GameObject{
 public:
-	Wall(sf::Vector2f pos, float width, float height, Type type);
+	Wall(LuaConfig config, Type type);
 	virtual ~Wall();
 
 	virtual void addCollision(GameObject* obj);

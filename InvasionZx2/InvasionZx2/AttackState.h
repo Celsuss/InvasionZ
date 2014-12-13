@@ -8,17 +8,10 @@ class AttackState : public AIState{
 public:
 	AttackState();
 	virtual ~AttackState();
-	virtual void update(GameObject* gameObject);
+	virtual void update(GameObject* gameObject, AIStateComponent* AIState);
 	virtual void enterState();
 	virtual void exitState();
 private:
 	void move(GameObject* gameObject, sf::Vector2f deltaPos);
 	void stopMoving(GameObject* gameObject);
-	void attack(GameObject* gameObject);
-
-	float m_AttackDamage;
-
-	sf::Time m_AttackCooldown;
-	sf::Clock m_AttackClock;
 };
-

@@ -1,4 +1,5 @@
 #include "EntityFactory.h"
+#include "LuaConfig.h"
 #include "Player.h"
 #include "Zombie.h"
 #include "Bullet.h"
@@ -16,9 +17,9 @@ EntityFactory* EntityFactory::getInstance(){
 	return m_Instance;
 }
 
-void EntityFactory::initialize(Level* level, sf::Vector2f playerPos){
+void EntityFactory::initialize(Level* level){
 	getInstance()->m_Level = level;
-	getInstance()->m_PlayerPtr = new Player(playerPos, GameObject::Player);
+	getInstance()->m_PlayerPtr = new Player(LuaConfig("Player"), GameObject::Player);
 	getInstance()->createGameObject(getInstance()->m_PlayerPtr);
 }
 

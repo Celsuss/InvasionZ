@@ -44,6 +44,46 @@ Player::Player(sf::Vector2f pos, Type type){
 	setDrawableData();
 }
 
+Player::Player(LuaConfig config, Type type){
+	m_Type = type;
+
+	sf::Vector2f pos;
+	pos.x = config.getInt("START_POSITION_X");
+	pos.y = config.getInt("START_POSITION_Y");
+
+	MovementData* movementData = new MovementData(config.getInt("MOVEMENT_SPEED"));
+	PositionData* positionData = new PositionData(pos);
+	SpriteData* spriteData = new SpriteData(config.getString("SPRITE"), positionData);
+	IsPlayerData* isPlayerData = new IsPlayerData();
+	WeaponData* weaponData = new WeaponData();
+	AmmoData* ammoData = new AmmoData();
+	CollisionData* collisionData = new CollisionData(CollisionData::Circle);
+	HealthData* healthData = new HealthData(config.getInt("HEALTH"));
+
+	m_DataMap[movementData->getName()] = std::shared_ptr<MovementData>(movementData);
+	m_DataMap[positionData->getName()] = std::shared_ptr<PositionData>(positionData);
+	m_DataMap[spriteData->getName()] = std::shared_ptr<SpriteData>(spriteData);
+	m_DataMap[isPlayerData->getName()] = std::shared_ptr<IsPlayerData>(isPlayerData);
+	m_DataMap[weaponData->getName()] = std::shared_ptr<WeaponData>(weaponData);
+	m_DataMap[ammoData->getName()] = std::shared_ptr<AmmoData>(ammoData);
+	m_DataMap[collisionData->getName()] = std::shared_ptr<CollisionData>(collisionData);
+	m_DataMap[healthData->getName()] = std::shared_ptr<HealthData>(healthData);
+
+	RotateToMouseComponent* rotateToMouseComponent = new RotateToMouseComponent(spriteData, movementData);
+	MoveComponent* moveComponent = new MoveComponent(spriteData, positionData, movementData, isPlayerData);
+	ShootComponent* shootComponent = new ShootComponent(weaponData);
+	HealthBarComponent* healthBarComponent = new HealthBarComponent(healthData, positionData);
+	ChangeWeaponComponent* changeWeaponComponent = new ChangeWeaponComponent(weaponData);
+
+	m_ComponentMap[rotateToMouseComponent->getName()] = std::shared_ptr<RotateToMouseComponent>(rotateToMouseComponent);
+	m_ComponentMap[moveComponent->getName()] = std::shared_ptr<MoveComponent>(moveComponent);
+	m_ComponentMap[shootComponent->getName()] = std::shared_ptr<ShootComponent>(shootComponent);
+	m_ComponentMap[healthBarComponent->getName()] = std::shared_ptr<HealthBarComponent>(healthBarComponent);
+	m_ComponentMap[changeWeaponComponent->getName()] = std::shared_ptr<ChangeWeaponComponent>(changeWeaponComponent);
+
+	setDrawableData();
+}
+
 Player::~Player(){}
 
 void Player::addCollision(GameObject* obj){}

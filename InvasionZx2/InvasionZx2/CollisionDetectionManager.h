@@ -2,7 +2,9 @@
 #include "CollisionData.h"
 #include <vector>
 
+class Wall;
 class Level;
+class GridNode;
 class GameObject;
 
 class CollisionDetectionManager{
@@ -13,6 +15,7 @@ public:
 
 	static void collisionDetection(Level* level);
 	static void addGameObject(GameObject* obj);
+	static bool getNodeCollideWithWall(GridNode* node, Wall* wall);
 private:
 	CollisionDetectionManager();
 	~CollisionDetectionManager();
@@ -27,5 +30,5 @@ private:
 
 	static bool isPhysicalColliders(CollisionData* collisionData1, CollisionData* collisionData2);
 
-	GameObjectCollisionVector m_GameObjectVector;
+	GameObjectCollisionVector m_MovedGameObjects;
 };

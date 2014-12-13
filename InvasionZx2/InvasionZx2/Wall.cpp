@@ -3,36 +3,37 @@
 #include "GraphicManager.h"
 #include "VertexArrayData.h"
 
-Wall::Wall(sf::Vector2f pos, float width, float height, Type type){
+Wall::Wall(LuaConfig config, Type type){
 	m_Type = type;
 
-	/*sf::IntRect* rect = new sf::IntRect(static_cast<sf::Vector2i>(*m_PositionData.getPosition()), sf::Vector2<int>(width, height));
-	m_SpriteData.getSprite()->setTextureRect(*rect);
-	m_SpriteData.getSprite()->setOrigin(m_SpriteData.getSprite()->getLocalBounds().width / 2, m_SpriteData.getSprite()->getLocalBounds().height / 2);
+	int posX = config.getInt("POSITION_X");
+	int posY = config.getInt("POSITION_Y");
+	int width = config.getInt("WIDTH");
+	int height = config.getInt("HEIGHT");
+	int thickness = config.getInt("THICKNESS");
 
-	m_DataVector.push_back(new CollisionData(CollisionData::Box));
-	m_DataVector.push_back(&m_SpriteData);*/
-
-	//Create a copy of pos for PositionData
-	sf::Vector2f positionDataPos = pos;
+	sf::Vector2f pos(posX, posY);
 
 	sf::VertexArray line(sf::LinesStrip, 2);
-	line[0].position = pos;
-	
-	if (width == 0)
-		pos.y += height;
-	else
-		pos.x += width;
 
-	line[1].position = pos;
-	line[0].color = sf::Color::Black;
-	line[1].color = sf::Color::Black;
+	sf::Vector2f tmpPos(pos);
+	for (int i = 0; i < 2; i++){
+		line[i].position = tmpPos;
+		line[i].color = sf::Color::Black;
+		tmpPos.y += height;
+		tmpPos.x += width;
+	}
+
 
 	sf::VertexArray* wall = new sf::VertexArray(line);
 
-	m_DataVector.push_back(new CollisionData(CollisionData::Box));
-	m_DataVector.push_back(new PositionData(positionDataPos));
-	m_DataVector.push_back(new VertexArrayData(wall));
+	CollisionData* collisionData = new CollisionData(CollisionData::Line);
+	PositionData* positionData = new PositionData(pos);
+	VertexArrayData* vertexArrayData = new VertexArrayData(wall);
+
+	m_DataMap[collisionData->getName()] = std::shared_ptr<CollisionData>(collisionData);
+	m_DataMap[positionData->getName()] = std::shared_ptr<PositionData>(positionData);
+	m_DataMap[vertexArrayData->getName()] = std::shared_ptr<VertexArrayData>(vertexArrayData);
 
 	setDrawableData();
 }

@@ -1,18 +1,33 @@
-﻿Build started 10/1/2014 10:09:26 PM.
-     1>Project "C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" on node 2 (Build target(s)).
+﻿Build started 12/12/2014 11:29:32 PM.
+     1>Project "C:\Users\Celsuss\Documents\GitHub\InvasionZ\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CollisionDetectionManager.cpp GridManager.cpp Level.cpp
-         GridManager.cpp
-     1>c:\users\celsuss\documents\visual studio 2013\projects\invasionzx2\invasionzx2\gridmanager.cpp(22): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\celsuss\documents\visual studio 2013\projects\invasionzx2\invasionzx2\gridmanager.cpp(25): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\celsuss\documents\visual studio 2013\projects\invasionzx2\invasionzx2\gridmanager.cpp(40): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\celsuss\documents\visual studio 2013\projects\invasionzx2\invasionzx2\gridmanager.cpp(41): warning C4018: '<' : signed/unsigned mismatch
-         CollisionDetectionManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AIStateComponent.cpp AttackState.cpp CollisionDetectionManager.cpp EntityFactory.cpp GUI.cpp Game.cpp GridManager.cpp Gun.cpp HealthPotion.cpp HitState.cpp HuntState.cpp ItemManager.cpp Level.cpp MachineGun.cpp SpawnTrailComponent.cpp SpawnerComponent.cpp
+         Level.cpp
+     1>c:\users\celsuss\documents\github\invasionz\invasionzx2\invasionzx2\level.cpp(21): warning C4244: 'initializing' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\celsuss\documents\github\invasionz\invasionzx2\invasionzx2\level.cpp(22): warning C4244: 'initializing' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\celsuss\documents\github\invasionz\invasionzx2\invasionzx2\level.cpp(101): warning C4244: 'return' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\celsuss\documents\github\invasionz\invasionzx2\invasionzx2\level.cpp(105): warning C4244: 'return' : conversion from 'unsigned int' to 'float', possible loss of data
+         Generating Code...
+         Compiling...
+         Game.cpp
          Generating Code...
          Skipping... (no relevant changes detected)
-         Level.cpp
+         SpawnerComponent.cpp
+         SpawnTrailComponent.cpp
+         MachineGun.cpp
+         ItemManager.cpp
+         HuntState.cpp
+         HitState.cpp
+         HealthPotion.cpp
+         Gun.cpp
+         GridManager.cpp
+         GUI.cpp
+         EntityFactory.cpp
+         CollisionDetectionManager.cpp
+         AttackState.cpp
+         AIStateComponent.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.lib" /MACHINE:X86 Debug\AIState.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Celsuss\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Celsuss\Documents\Visual Studio 2013\Projects\InvasionZx2\InvasionZx2\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Celsuss\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Celsuss\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.lib" /MACHINE:X86 Debug\AIState.obj
          Debug\AIStateComponent.obj
          Debug\AmmoData.obj
          Debug\AttackState.obj
@@ -39,6 +54,8 @@
          Debug\HealthData.obj
          Debug\HealthPotion.obj
          Debug\HealthPotionItem.obj
+         Debug\HitState.obj
+         Debug\HuntState.obj
          Debug\InputManager.obj
          Debug\IsPlayerData.obj
          Debug\IsWeaponData.obj
@@ -48,7 +65,40 @@
          Debug\Key.obj
          Debug\KeyboardKey.obj
          Debug\KillAfterTimeComponent.obj
+         Debug\lapi.obj
+         Debug\lauxlib.obj
+         Debug\lbaselib.obj
+         Debug\lbitlib.obj
+         Debug\lcode.obj
+         Debug\lcorolib.obj
+         Debug\lctype.obj
+         Debug\ldblib.obj
+         Debug\ldebug.obj
+         Debug\ldo.obj
+         Debug\ldump.obj
          Debug\Level.obj
+         Debug\lfunc.obj
+         Debug\lgc.obj
+         Debug\linit.obj
+         Debug\liolib.obj
+         Debug\llex.obj
+         Debug\lmathlib.obj
+         Debug\lmem.obj
+         Debug\loadlib.obj
+         Debug\lobject.obj
+         Debug\lopcodes.obj
+         Debug\loslib.obj
+         Debug\lparser.obj
+         Debug\lstate.obj
+         Debug\lstring.obj
+         Debug\lstrlib.obj
+         Debug\ltable.obj
+         Debug\ltablib.obj
+         Debug\ltm.obj
+         Debug\LuaConfig.obj
+         Debug\lundump.obj
+         Debug\lvm.obj
+         Debug\lzio.obj
          Debug\MachineGun.obj
          Debug\MachineGunItem.obj
          Debug\Main.obj
@@ -56,6 +106,8 @@
          Debug\MoveComponent.obj
          Debug\MovementData.obj
          Debug\ParticleEffectData.obj
+         Debug\Pathfinder.obj
+         Debug\PatrolState.obj
          Debug\Player.obj
          Debug\PlayerPickupItem.obj
          Debug\PositionData.obj
@@ -77,9 +129,9 @@
          Debug\Weapon.obj
          Debug\WeaponData.obj
          Debug\Zombie.obj
-         InvasionZx2.vcxproj -> C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\Debug\InvasionZx2.exe
-     1>Done Building Project "C:\Users\Celsuss\documents\visual studio 2013\Projects\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" (Build target(s)).
+         InvasionZx2.vcxproj -> C:\Users\Celsuss\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.exe
+     1>Done Building Project "C:\Users\Celsuss\Documents\GitHub\InvasionZ\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:11.52
+Time Elapsed 00:00:02.45

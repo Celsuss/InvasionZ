@@ -10,11 +10,16 @@ class Player;
 class EntityFactory{
 public:
 	static EntityFactory* getInstance();
-	static void initialize(Level* level, sf::Vector2f playerPos);
+	static void initialize(Level* level);
 	
 	template<typename o>
 	static void createGameObject(o* object){
 		getInstance()->m_Level->createGameObject(object);
+	}
+
+	template<typename o>
+	static void deleteGameObject(o* object){
+		getInstance()->m_Level->destroyDeadObjects
 	}
 
 	static Player* getPlayer();

@@ -4,7 +4,7 @@ class CollisionData : public Data{
 public:
 	enum CollisionShape{
 		Circle,
-		Box
+		Line
 	};
 
 	CollisionData(CollisionShape shape, bool isPhysicalCollider = true);

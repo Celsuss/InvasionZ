@@ -6,6 +6,7 @@
 #include "TimeManager.h"
 #include "ItemManager.h"
 #include "GridManager.h"
+#include "LuaConfig.h"
 #include "Spawner.h"
 #include "Shared.h"
 #include "Player.h"
@@ -17,65 +18,23 @@
 #include <iostream>
 
 Level::Level(){
-	sf::Vector2f pos = sf::Vector2f(300, 300);
-	sf::Vector2f gridStartPos = sf::Vector2f(0, 0);
-	sf::Vector2f gridEndPos = sf::Vector2f(0, 0);
 	float windowSizeX = GraphicManager::getWindow()->getSize().x;
 	float windowSizeY = GraphicManager::getWindow()->getSize().y;
-	float wallHeight = 100;
-	float wallWidth = 100;
 
-	EntityFactory::initialize(this, pos);
+	//GridManager::initialize(LuaConfig("Grid"));
+	EntityFactory::initialize(this);
 	EntityFactory::createGameObject(new Floor("Floor", GameObject::Other));
-	//----Create Walls
-	/*gridStartPos.y = pos.y*2;
-	EntityFactory::createGameObject(new Wall(pos, windowSizeX, wallHeight, GameObject::Wall));
+	generateLevel(LuaConfig("LevelOne"));
+	GridManager::initialize(LuaConfig("Grid"), this);
 
-	pos = sf::Vector2f(50, windowSizeY / 2);
-	gridStartPos.x = pos.x*2;
-	EntityFactory::createGameObject(new Wall(pos, wallWidth, windowSizeY, GameObject::Wall));
-
-	pos = sf::Vector2f(windowSizeX / 2, windowSizeY - 50);
-	gridEndPos.y = pos.y - (wallHeight/2);
-	EntityFactory::createGameObject(new Wall(pos, windowSizeX, wallHeight, GameObject::Wall));
-
-	pos = sf::Vector2f(windowSizeX - 50, windowSizeY / 2);
-	gridEndPos.x = pos.x - (wallWidth/2);
-	EntityFactory::createGameObject(new Wall(pos, wallWidth, windowSizeY, GameObject::Wall));*/
-
-	float width = windowSizeX - 300;
-	float height = windowSizeY - 300;
-
-	pos = sf::Vector2f(150, 150);
-	m_WallVector.push_back(new Wall(pos, width, 0, GameObject::Wall));
-	m_GameObjectVector.push_back(m_WallVector.back());
-	gridStartPos = pos;
-
-	pos = sf::Vector2f(150 + width, 150);
-	m_WallVector.push_back(new Wall(pos, 0, height, GameObject::Wall));
-	m_GameObjectVector.push_back(m_WallVector.back());
-	gridEndPos.x = pos.x;
-
-	pos = sf::Vector2f(150, 150 + height);
-	m_WallVector.push_back(new Wall(pos, width, 0, GameObject::Wall));
-	m_GameObjectVector.push_back(m_WallVector.back());
-	gridEndPos.y = pos.y;
-
-	pos = sf::Vector2f(150, 150);
-	m_WallVector.push_back(new Wall(pos, 0, height, GameObject::Wall));
-	m_GameObjectVector.push_back(m_WallVector.back());
-
-	//----/Create Walls
-
-	pos = sf::Vector2f(400, 400);
+	sf::Vector2f pos = sf::Vector2f(400, 400);
 	//EntityFactory::createGameObject(new Zombie(pos, GameObject::Zombie));
 
 	pos = sf::Vector2f(500, 400);
-	//EntityFactory::createGameObject(new Spawner(pos, GameObject::Other));
+	EntityFactory::createGameObject(new Spawner(pos, GameObject::Other));
 
 	GUI::initialize();
 	ItemManager::initialize();
-	GridManager::initialize(gridStartPos, gridEndPos);
 
 	//----DEBUG
 	m_GameObjectCound = 0;
@@ -92,6 +51,7 @@ void Level::update(){
 	}
 	CollisionDetectionManager::collisionDetection(this);
 
+	drawScenery();
 	drawWalls();
 	GridManager::update();
 	GUI::update();
@@ -102,6 +62,12 @@ void Level::update(){
 		std::cout << "GameObjects: " << m_GameObjectCound << "\n";
 	}
 	//----&DEBUG
+}
+
+void Level::drawScenery(){
+	for (auto i = m_SceneryVector.begin(); i != m_SceneryVector.end(); i++){
+		//(*i)->update();
+	}
 }
 
 void Level::drawWalls(){
@@ -132,12 +98,23 @@ GameObject* Level::getGameObject(GameObject::Type type, int offset){
 	return nullptr;
 }
 
+Level::WallVector& Level::getWallVector(){
+	return m_WallVector;
+}
+
 float Level::getGameObjectVectorSize()const{
 	return m_GameObjectVector.size();
 }
 
 float Level::getWallCount()const{
-	return m_GameObjectVector.size();
+	return m_WallVector.size();
+}
+
+void Level::generateLevel(LuaConfig config){
+	for (int i = 0; i < config.getInt("WALLCOUNT"); i++){
+		m_WallVector.push_back(new Wall(LuaConfig(config.getString("WALLNAMES", i)), GameObject::Wall));
+		m_GameObjectVector.push_back(m_WallVector.back());
+	}
 }
 
 void Level::spawnObjects(){
@@ -148,10 +125,13 @@ void Level::spawnObjects(){
 }
 
 void Level::destroyDeadObjects(){
-	for (auto i = m_GameObjectVector.begin(); i != m_GameObjectVector.end(); i++){
+	for (auto i = m_GameObjectVector.begin(); i != m_GameObjectVector.end(); ){
 		if (!(*i)->getIsAlive()){
-			//delete *i;
-			m_GameObjectVector.erase(i--);
+			delete *i;
+			i = m_GameObjectVector.erase(i);
 		}
+		else
+			i++;
 	}
+	int k = 0;
 }

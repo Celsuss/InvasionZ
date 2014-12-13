@@ -1,0 +1,8 @@
+-- int --
+START_POSITION_X	= 300
+START_POSITION_Y	= 300
+HEALTH				= 100
+MOVEMENT_SPEED		= 100
+
+-- string --
+SPRITE				= "player"

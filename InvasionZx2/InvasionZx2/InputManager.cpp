@@ -32,12 +32,12 @@ InputManager::InputManager(){
 
 	m_KeyVector.push_back(m_OneKey);
 	m_KeyVector.push_back(m_TwoKey);
-	m_KeyVector.push_back(m_ThreeKey);
+	/*m_KeyVector.push_back(m_ThreeKey);
 	m_KeyVector.push_back(m_FourKey);
 	m_KeyVector.push_back(m_FiveKey);
 	m_KeyVector.push_back(m_SixKey);
 	m_KeyVector.push_back(m_SevenKey);
-	m_KeyVector.push_back(m_EightKey);
+	m_KeyVector.push_back(m_EightKey);*/
 	m_KeyVector.push_back(m_NineKey);
 }
 

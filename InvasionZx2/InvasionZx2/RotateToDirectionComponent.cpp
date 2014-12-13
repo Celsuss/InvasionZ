@@ -5,6 +5,7 @@
 #include "SpriteData.h"
 
 RotateToDirectionComponent::RotateToDirectionComponent(SpriteData* spriteData, PositionData* positionData, MovementData* movementData){
+	m_Name = "RotateToDirectionComponent";
 	m_SpriteData = spriteData;
 	m_PositionData = positionData;
 	m_MovementData = movementData;

@@ -6,7 +6,8 @@
 Floor::Floor(std::string texture, Type type){
 	m_Type = type;
 
-	m_DataVector.push_back(new SpriteData(texture, SpriteData::Background));
+	SpriteData* spriteData = new SpriteData(texture, SpriteData::Background);
+	m_DataMap[spriteData->getName()] = std::shared_ptr<SpriteData>(spriteData);
 
 	setDrawableData();
 }

@@ -8,10 +8,15 @@
 MachineGunItem::MachineGunItem(sf::Vector2f pos){
 	m_Type = GameObject::Item;
 
-	m_DataVector.push_back(new PositionData(pos));
-	m_DataVector.push_back(new SpriteData("MachineGun", getData<PositionData>("PositionData")));
-	m_DataVector.push_back(new CollisionData(CollisionData::Circle, false));
-	m_DataVector.push_back(new ItemData(new MachineGun()));
+	PositionData* positionData = new PositionData(pos);
+	SpriteData* spriteData = new SpriteData("MachineGun", positionData);
+	CollisionData* collisionData = new CollisionData(CollisionData::Circle, false);
+	ItemData* itemData = new ItemData(new MachineGun());
+
+	m_DataMap[positionData->getName()] = std::shared_ptr<PositionData>(positionData);
+	m_DataMap[spriteData->getName()] = std::shared_ptr<SpriteData>(spriteData);
+	m_DataMap[collisionData->getName()] = std::shared_ptr<CollisionData>(collisionData);
+	m_DataMap[itemData->getName()] = std::shared_ptr<ItemData>(itemData);
 
 	setDrawableData();
 }

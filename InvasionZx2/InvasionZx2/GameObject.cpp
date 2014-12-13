@@ -7,29 +7,49 @@
 
 GameObject::GameObject(){}
 
-GameObject::~GameObject(){}
+GameObject::~GameObject(){
+	/*for (auto i = m_ComponentMap.begin(); i != m_ComponentMap.end(); i++){
+		delete i->second;
+	}
+	for (auto i = m_DataMap.begin(); i != m_DataMap.end(); i++){
+		delete i->second;
+	}
+	for (auto i = m_DrawableDataVector.begin(); i != m_DrawableDataVector.end(); i++){
+		delete *i;
+		//i = m_DrawableDataVector.erase(i);
+	}
+	m_ComponentMap.clear();
+	m_DataMap.clear();
+	m_DrawableDataVector.clear();*/
+}
 
 void GameObject::setDrawableData(){
 	SpriteData* spriteData = getData<SpriteData>("SpriteData");
 	if (spriteData != nullptr){
-		m_DrawableData = spriteData;
+		//m_DrawableData = spriteData;
+		m_DrawableDataVector.push_back(spriteData);
 		return;
 	}
 
 	VertexArrayData* vertexArrayData = getData<VertexArrayData>("VertexArrayData");
 	if (vertexArrayData != nullptr){
-		m_DrawableData = vertexArrayData;
+		m_DrawableDataVector.push_back(vertexArrayData);
 		return;
 	}
 }
 
 void GameObject::update(){
-	for (auto i = m_ComponentVector.begin(); i != m_ComponentVector.end(); i++){
-		(*i)->update(this);
+	//for (auto i = m_ComponentVector.begin(); i != m_ComponentVector.end(); i++){
+	for (auto i = m_ComponentMap.begin(); i != m_ComponentMap.end(); i++){
+		//(*i)->update(this);
+		i->second->update(this);
 	}
 
-	if (m_IsAlive)
-		m_DrawableData->draw();
+	if (m_IsAlive){
+		for (auto i = m_DrawableDataVector.begin(); i != m_DrawableDataVector.end(); i++){
+			(*i)->draw();
+		}
+	}
 }
 
 void GameObject::kill(){

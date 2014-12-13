@@ -1,4 +1,5 @@
 #include "AIStateComponent.h"
+#include "VertexArrayData.h"
 #include "EntityFactory.h"
 #include "PositionData.h"
 #include "SpriteData.h"
@@ -8,21 +9,28 @@
 #include "Shared.h"
 #include "Wall.h"
 
-AIStateComponent::AIStateComponent(AIState* startingState){
+AIStateComponent::AIStateComponent(AIState* startingState, AIState* globalState){
+	m_Name = "AIStateComponent";
 	m_ActiveState = startingState;
+	m_ActiveState->enterState();
+	m_GlobalState = globalState;
 }
 
 AIStateComponent::~AIStateComponent(){}
 
 void AIStateComponent::update(GameObject* gameObject){
 	if (m_ActiveState != nullptr)
-		m_ActiveState->update(gameObject);
+		m_ActiveState->update(gameObject, this);
+	if (m_GlobalState != nullptr){
+		int j = 0;
+		m_GlobalState->update(gameObject, this);
+	}
 }
 
 void AIStateComponent::changeState(AIState* state){
 	m_ActiveState->exitState();
+	delete m_ActiveState;
 
-	m_PreviousState = m_ActiveState;
 	m_ActiveState = state;
 
 	m_ActiveState->enterState();
@@ -36,15 +44,38 @@ bool AIStateComponent::isInLineOfSight(GameObject* gameObject){
 
 	for (int i = 0; i < wallCount; i++){
 		Wall* wall = static_cast<Wall*>(EntityFactory::getInstance()->m_Level->getGameObject(GameObject::Wall, i));
-		SpriteData* spriteData = wall->getData<SpriteData>("SpriteData");
-		sf::Sprite* sprite = wall->getData<SpriteData>("SpriteData")->getSprite();
-		sf::Vector2f wallPos = wall->getData<SpriteData>("SpriteData")->getSprite()->getPosition();
-		sf::FloatRect wallRect = wall->getData<SpriteData>("SpriteData")->getSprite()->getLocalBounds();
+		VertexArrayData* vertexData = wall->getData<VertexArrayData>("VertexArrayData");
+		sf::Vector2f wallPos = *wall->getData<PositionData>("PositionData")->getPosition();
+		sf::FloatRect wallRect = vertexData->getVertexArray()->getBounds();
 
-		float wallMinX = wallPos.x + (wallRect.height / 2);
-		float wallMaxX = wallPos.x - (wallRect.height / 2);
-		float wallMinY = wallPos.y + (wallRect.width / 2);
-		float wallMaxY = wallPos.y - (wallRect.width / 2);
+		float wallMinX = 0;
+		float wallMaxX = 0;
+		float wallMinY = 0;
+		float wallMaxY = 0;
+
+		float length;
+		if (wallRect.width == 0)
+			length = wallRect.height;
+		else
+			length = wallRect.width;
+
+		if (wallPos.x > (wallPos.x - length)){
+			wallMaxX = wallPos.x;
+			wallMinX = wallPos.x - length;
+		}
+		else{
+			wallMaxX = wallPos.x - length;
+			wallMinX = wallPos.x;
+		}
+
+		if (wallPos.y > (wallPos.y + length)){
+			wallMaxY = wallPos.y;
+			wallMaxY = wallPos.y + length;
+		}
+		else{
+			wallMaxY = wallPos.y + length;
+			wallMaxY = wallPos.y;
+		}
 
 		if (!Shared::isLineOfSight(pos1, pos2, wallMinX, wallMaxX, wallMinY, wallMaxY))
 			return false;

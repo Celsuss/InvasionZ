@@ -1,8 +1,10 @@
 #pragma once
 #include "SFML/System/Vector2.hpp"
+#include "LuaConfig.h"
 #include <vector>
 
 class GridNode;
+class Level;
 
 class GridManager{
 public:
@@ -10,15 +12,22 @@ public:
 	typedef std::vector<GridNodeVector>GridNodeMatrix;
 
 	static GridManager* getInstance();
-	static void initialize(sf::Vector2f startPos, sf::Vector2f endPos);
+	static void initialize(LuaConfig config, Level* level);
 	static void update();
-
+	static void clearValues();
+	static GridNode* getRandomNode();
+	static GridNode* getRandomNodeWithinRange(sf::Vector2f pos, int range);
+	static GridNode* getNode(sf::Vector2f pos);
+	static GridNode* getMatrixNode(sf::Vector2f gridPos);
+	static sf::Vector2f* getGridSize();
 private:
 	GridManager();
 	~GridManager();
 	static GridManager* m_Instance;
 
-	static void draw();
+	void draw();
+	void setNodesIsWalkable(Level* level);
 
 	GridNodeMatrix m_GridTileMatrix;
+	sf::Vector2f* m_GridSize;
 };

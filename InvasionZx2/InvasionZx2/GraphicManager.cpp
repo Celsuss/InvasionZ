@@ -17,6 +17,7 @@ GraphicManager* GraphicManager::getInstance(){
 
 void GraphicManager::initialize(){
 	getInstance()->m_Window.create(sf::VideoMode(1200, 900), "InvasionZx2");
+	getInstance()->m_Window.setFramerateLimit(60);		//Set max fps tp 60
 }
 
 void GraphicManager::update(){

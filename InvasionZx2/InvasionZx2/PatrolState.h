@@ -1,6 +1,7 @@
 #pragma once
 #include "AIState.h"
 #include "SFML/System/Vector2.hpp"
+#include <vector>
 
 class HealthData;
 class PositionData;
@@ -19,7 +20,7 @@ private:
 	bool isDamaged(GameObject* gameObject);
 
 	sf::Vector2f m_TargetPosition;
-	sf::Vector2f m_NextStepPosition;
+	std::vector<sf::Vector2f*> m_Path;
 
 	HealthData* m_HealthData;
 	PositionData* m_PositionData;

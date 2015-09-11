@@ -14,11 +14,11 @@ Pathfinder* Pathfinder::getInstance(){
 	return m_Instance;
 }
 
-sf::Vector2f Pathfinder::findPath(sf::Vector2f startPos, sf::Vector2f endPos){
+Pathfinder::PositionVector Pathfinder::findPath(sf::Vector2f startPos, sf::Vector2f endPos){
 	return getInstance()->getPath(startPos, endPos);
 }
 
-sf::Vector2f Pathfinder::getPath(sf::Vector2f startPos, sf::Vector2f endPos){
+Pathfinder::PositionVector Pathfinder::getPath(sf::Vector2f startPos, sf::Vector2f endPos){
 	GridNode* endNode = GridManager::getNode(endPos);
 	GridManager::GridNodeVector openList;
 	GridManager::GridNodeVector closedList;
@@ -81,6 +81,8 @@ sf::Vector2f Pathfinder::getPath(sf::Vector2f startPos, sf::Vector2f endPos){
 	}
 	std::cout << " (1)\n(2)";
 
+	PositionVector returnList;
+
 	GridNode* startNode = GridManager::getNode(startPos);
 	GridNode* returnNode = endNode;
 	GridNode* prevNode = nullptr;
@@ -88,6 +90,7 @@ sf::Vector2f Pathfinder::getPath(sf::Vector2f startPos, sf::Vector2f endPos){
 	while (true){
 		std::cout << loopTurn << " ";
 		if (returnNode->getParentNode() != nullptr){
+			returnList.push_back(returnNode->getPositionData()->getPosition());
 			prevNode = returnNode;
 			returnNode = returnNode->getParentNode();
 		}
@@ -98,7 +101,8 @@ sf::Vector2f Pathfinder::getPath(sf::Vector2f startPos, sf::Vector2f endPos){
 	std::cout << " (2)\n\n";
 
 	GridManager::clearValues();
-	return *prevNode->getPositionData()->getPosition();
+	//return *prevNode->getPositionData()->getPosition();
+	return returnList;
 }
 
 GridNode* Pathfinder::getNodeWithLowestFCost(GridManager::GridNodeVector* openList){

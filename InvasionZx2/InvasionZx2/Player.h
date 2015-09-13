@@ -1,3 +1,9 @@
+/*
+	Player gameobject, controlled by player input
+	Components used: RotateToMouseComponent, MoveComponent, ShootComponent, HealthBarComponent, ChangeWeaponComponent, SpawnTrailComponent
+	Data used: MovementData, PositionData, SpriteData, IsPlayerData, WeaponData, AmmoData, CollisionData, HealthDatas
+*/
+
 #pragma once
 #include "GameObject.h"
 #include "RotateToMouseComponent.h"

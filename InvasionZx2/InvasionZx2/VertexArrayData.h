@@ -1,3 +1,7 @@
+/*
+	Holds vertex array data
+*/
+
 #pragma once
 #include "DrawableData.h"
 #include "SFML/Graphics/VertexArray.hpp"

@@ -1,3 +1,9 @@
+/*
+	Floor gameobject, only a decorative gameobject
+	Components used:
+	Data used: SpriteData
+*/
+
 #pragma once
 #include "GameObject.h"
 #include "SpriteData.h"

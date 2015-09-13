@@ -1,3 +1,8 @@
+/*
+	Component that moves the GameObject
+	Data needed: SpriteData, PositionData, MovementData, IsPlayerData
+*/
+
 #pragma once
 #include "Component.h"
 

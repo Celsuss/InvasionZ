@@ -1,3 +1,8 @@
+/*
+	Read player input to change player weapon
+	Data needed: WeaponData
+*/
+
 #include "ChangeWeaponComponent.h"
 #include "InputManager.h"
 #include "WeaponData.h"
@@ -14,6 +19,7 @@ void ChangeWeaponComponent::update(GameObject* gameObject){
 	changeWeapon();
 }
 
+//Change player weapon if key pressed
 void ChangeWeaponComponent::changeWeapon(){
 	if (InputManager::isOneKeyPressed()){
 		m_WeaponData->changeCurrentWeapon(1);

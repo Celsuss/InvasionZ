@@ -1,3 +1,7 @@
+/*
+	Components for gameobjects
+*/
+
 #include "Component.h"
 
 Component::Component(){}

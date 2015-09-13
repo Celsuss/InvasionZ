@@ -1,3 +1,7 @@
+/*
+	Holds item data
+*/
+
 #include "ItemData.h"
 #include "Item.h"
 

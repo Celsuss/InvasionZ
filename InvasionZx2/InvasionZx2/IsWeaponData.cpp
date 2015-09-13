@@ -1,3 +1,7 @@
+/*
+	Holds is weapon data
+*/
+
 #include "IsWeaponData.h"
 
 IsWeaponData::IsWeaponData(){

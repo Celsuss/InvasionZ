@@ -1,3 +1,7 @@
+/*
+	Holds position data
+*/
+
 #include "PositionData.h"
 
 PositionData::PositionData(sf::Vector2f pos){

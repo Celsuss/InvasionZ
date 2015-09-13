@@ -1,3 +1,9 @@
+/*
+	Zombie gameobject, AI controlled and attack the player if seen or walk around the map. Can be killed by bullets
+	Components used: HealthBarComponent, MoveComponent, AIStateComponent, RotateComponent
+	Data used: MovementData, PositionData, SpriteData, CollisionData, HealthData
+*/
+
 #pragma once
 #include "GameObject.h"
 #include "LuaConfig.h"

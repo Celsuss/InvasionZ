@@ -1,3 +1,7 @@
+/*
+	Holds position data
+*/
+
 #pragma once
 #include "Data.h"
 #include "SFML/System/Vector2.hpp"

@@ -1,8 +1,10 @@
+/*
+	Holds all the textures used in the game
+*/
+
 #pragma once
 #include "SFML/Graphics/Texture.hpp"
 #include <map>
-
-//Manage so there is no duplicate textures
 
 class TextureManager{
 public:

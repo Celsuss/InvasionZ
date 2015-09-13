@@ -1,10 +1,12 @@
+/*
+	Read player input to change player weapon
+	Data needed: WeaponData
+*/
+
 #pragma once
 #include "Component.h"
 
 class WeaponData;
-class SpriteData;
-class PositionData;
-class MovementData;
 
 class ChangeWeaponComponent : public Component{
 public:

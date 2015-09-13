@@ -1,3 +1,7 @@
+/*
+	Read input, return true if a key is pressed
+*/
+
 #pragma once
 #include <vector>
 

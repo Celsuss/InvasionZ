@@ -1,3 +1,9 @@
+/*
+	Spawn a zombie at the game objects position after a set amount of time
+
+	Data needed: PositionData
+*/
+
 #pragma once
 #include "Component.h"
 #include "SFML/System/Time.hpp"
@@ -5,10 +11,10 @@
 
 class PositionData;
 
-class SpawnerComponenter : public Component{
+class SpawnerComponent : public Component{
 public:
-	SpawnerComponenter(PositionData* positionData);
-	virtual ~SpawnerComponenter();
+	SpawnerComponent(PositionData* positionData);
+	virtual ~SpawnerComponent();
 	void update(GameObject* gameObject);
 private:
 	GameObject* m_GameObject;

@@ -1,3 +1,8 @@
+/*
+	Component that moves the GameObject
+	Data needed: SpriteData, PositionData, MovementData, IsPlayerData
+*/
+
 #include "MovementData.h"
 #include "CollisionDetectionManager.h"
 #include "MoveComponent.h"
@@ -30,6 +35,7 @@ void MoveComponent::update(GameObject* gameObject){
 	CollisionDetectionManager::addGameObject(gameObject);
 }
 
+//Check input to see if the player wants to move forward or backwards
 void MoveComponent::checkInput(GameObject* gameObject){
 	if (InputManager::isUpKeyDown())
 		movePlayer(gameObject, 1);
@@ -37,6 +43,7 @@ void MoveComponent::checkInput(GameObject* gameObject){
 		movePlayer(gameObject, -1);
 }
 
+//Moves the player object
 void MoveComponent::movePlayer(GameObject* gameObject, int direction){
 	sf::Vector2f* pos = m_PositionData->getPosition();
 	sf::Vector2f* rotation = m_MovementData->getDirection();
@@ -49,6 +56,7 @@ void MoveComponent::movePlayer(GameObject* gameObject, int direction){
 	m_SpriteData->getSprite()->setPosition(*pos);
 }
 
+//Moves all non player objects
 void MoveComponent::moveObject(GameObject* gameObject){
 	sf::Vector2f* pos = m_PositionData->getPosition();
 	sf::Vector2f* rotation = m_MovementData->getDirection();

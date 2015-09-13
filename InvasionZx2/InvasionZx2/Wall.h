@@ -1,3 +1,9 @@
+/*
+	Wall gameobject, gameobjects can't through the wall and bullts die when they hit the wall
+	Components used: 
+	Data used: CollisionData, PositionData, VertexArrayData
+*/
+
 #pragma once
 #include "LuaConfig.h"
 #include "GameObject.h"

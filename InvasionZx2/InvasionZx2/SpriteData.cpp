@@ -1,3 +1,7 @@
+/*
+	Holds sprite data
+*/
+
 #include "SpriteData.h"
 #include "PositionData.h"
 #include "MovementData.h"

@@ -1,3 +1,7 @@
+/*
+	Read lua files
+*/
+
 #include "LuaConfig.h"
 #include <sstream>
 
@@ -6,6 +10,7 @@
 static const int STACK_TOP = -1;
 static const int STACK_BOTTOM = 1;
 
+// Open a lue file with name and create a state with the lua file
 LuaConfig::LuaConfig(std::string name){
 	std::string filename = "./Scripts/" + name + ".lua";
 	m_LuaState = luaL_newstate();
@@ -21,6 +26,7 @@ LuaConfig::LuaConfig(std::string name){
 
 LuaConfig::~LuaConfig(){}
 
+// Get a int from the lue file
 int LuaConfig::getInt(const std::string name){
 	lua_getglobal(m_LuaState, name.c_str());
 
@@ -33,6 +39,7 @@ int LuaConfig::getInt(const std::string name){
 	return x;
 }
 
+// Get a string from the lua file
 std::string LuaConfig::getString(const std::string name){
 	lua_getglobal(m_LuaState, name.c_str());
 
@@ -45,6 +52,7 @@ std::string LuaConfig::getString(const std::string name){
 	return x;
 }
 
+// Get a string based on index from the lua file
 std::string LuaConfig::getString(const std::string name, const int index){
 	std::ostringstream convert;
 	convert << index;

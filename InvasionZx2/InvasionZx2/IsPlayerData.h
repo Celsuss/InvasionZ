@@ -1,3 +1,7 @@
+/*
+	Holds is player data
+*/
+
 #pragma once
 #include "Data.h"
 

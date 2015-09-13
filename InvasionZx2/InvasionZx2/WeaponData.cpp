@@ -1,3 +1,7 @@
+/*
+	Holds weapon data
+*/
+
 #include "WeaponData.h"
 #include "MachineGun.h"
 #include "Gun.h"
@@ -21,7 +25,7 @@ void WeaponData::changeCurrentWeapon(int index){
 	index--;
 	if (index < m_WeaponVector.size()){
 		m_CurrentWeapon = index;
-		GUI::setequippedWeapon(m_WeaponVector[m_CurrentWeapon]->getName());
+		GUI::setEquippedWeapon(m_WeaponVector[m_CurrentWeapon]->getName());
 	}
 }
 

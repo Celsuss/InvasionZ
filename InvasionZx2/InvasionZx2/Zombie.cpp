@@ -1,5 +1,11 @@
+/*
+	Zombie gameobject, AI controlled and attack the player if seen or walk around the map. Can be killed by bullets
+	Components used: HealthBarComponent, MoveComponent, AIStateComponent, RotateComponent
+	Data used: MovementData, PositionData, SpriteData, CollisionData, HealthData
+*/
+
 #include "Zombie.h"
-#include "RotateToDirectionComponent.h"
+#include "RotateComponent.h"
 #include "HealthBarComponent.h"
 #include "AIStateComponent.h"
 #include "GraphicManager.h"
@@ -29,12 +35,12 @@ Zombie::Zombie(sf::Vector2f pos, Type type){
 	HealthBarComponent* healthBarComponent = new HealthBarComponent(healthData, positionData);
 	MoveComponent* moveComponent = new MoveComponent(spriteData, positionData, movementData, nullptr);
 	AIStateComponent* aiStateComponent = new AIStateComponent(new PatrolState(healthData, positionData, movementData), new HitState());
-	RotateToDirectionComponent* rotateToDirectionComponent = new RotateToDirectionComponent(spriteData, positionData, movementData);
+	RotateComponent* rotateComponent = new RotateComponent(spriteData, positionData, movementData);
 
 	m_ComponentMap[healthBarComponent->getName()] = std::shared_ptr<HealthBarComponent>(healthBarComponent);
 	m_ComponentMap[moveComponent->getName()] = std::shared_ptr<MoveComponent>(moveComponent);
 	m_ComponentMap[aiStateComponent->getName()] = std::shared_ptr<AIStateComponent>(aiStateComponent);
-	m_ComponentMap[rotateToDirectionComponent->getName()] = std::shared_ptr<RotateToDirectionComponent>(rotateToDirectionComponent);
+	m_ComponentMap[rotateComponent->getName()] = std::shared_ptr<RotateComponent>(rotateComponent);
 
 	setDrawableData();
 }

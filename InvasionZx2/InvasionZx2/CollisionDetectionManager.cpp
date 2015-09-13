@@ -1,3 +1,8 @@
+/*
+	Collision detection and handeling
+	Singelton pattern
+*/
+
 #include "CollisionDetectionManager.h"
 #include "VertexArrayData.h"
 #include "PositionData.h"
@@ -15,16 +20,19 @@
 #include "Level.h"
 #include "Wall.h"
 
+// Singelton variable, the object instance
 CollisionDetectionManager* CollisionDetectionManager::m_Instance = new CollisionDetectionManager();
 
 CollisionDetectionManager::CollisionDetectionManager(){}
 
 CollisionDetectionManager::~CollisionDetectionManager(){}
 
+// Singelton method, returns the object instance
 CollisionDetectionManager* CollisionDetectionManager::getInstance(){
 	return m_Instance;
 }
 
+// Detect collisions between all recent moved game objects and all game objects in a level
 void CollisionDetectionManager::collisionDetection(Level* level){
 	for (auto i = getInstance()->m_MovedGameObjects.begin(); i != getInstance()->m_MovedGameObjects.end(); i++){
 		CollisionData* collisionData1 = (*i)->getData<CollisionData>("CollisionData");
@@ -44,6 +52,7 @@ void CollisionDetectionManager::collisionDetection(Level* level){
 	getInstance()->m_MovedGameObjects.clear();
 }
 
+// Add an object to check for collision
 void CollisionDetectionManager::addGameObject(GameObject* obj){
 	getInstance()->m_MovedGameObjects.push_back(obj);
 }
@@ -79,12 +88,14 @@ bool CollisionDetectionManager::getNodeCollideWithWall(GridNode* node, Wall* wal
 	return false;
 }
 
+// Check the types of the gameobjects, return false if both game objects are bullets else true
 bool CollisionDetectionManager::checkType(GameObject* obj1, GameObject* obj2){
 	if (obj1->getType() == GameObject::Bullet && obj2->getType() == GameObject::Bullet)
 		return false;
 	return true;
 }
 
+// Check the collision shapes for the game objects and call the correkt collision handling for the shapes
 void CollisionDetectionManager::checkShapes(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2){
 	if (*collisionData1->getShape() == CollisionData::Circle && *collisionData2->getShape() == CollisionData::Circle)
 		circleCircleCollision(obj1, obj2, collisionData1, collisionData2);
@@ -92,6 +103,7 @@ void CollisionDetectionManager::checkShapes(GameObject* obj1, GameObject* obj2, 
 		circleBoxCollision(obj1, obj2, collisionData1, collisionData2);
 }
 
+// Collision handling between two circles
 void CollisionDetectionManager::circleCircleCollision(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2){
 	PositionData* obj1PositionData = obj1->getData<PositionData>("PositionData");
 	SpriteData* obj1SpriteData = obj1->getData<SpriteData>("SpriteData");
@@ -132,6 +144,7 @@ void CollisionDetectionManager::circleCircleCollision(GameObject* obj1, GameObje
 	obj2SpriteData->getSprite()->setPosition(*obj2PositionData->getPosition());
 }
 
+// Collision handling between a box and a circle
 void CollisionDetectionManager::circleBoxCollision(GameObject* circleObj1, GameObject* rectObj2, CollisionData* collisionData1, CollisionData* collisionData2){
 	PositionData* circlePositionData = circleObj1->getData<PositionData>("PositionData");
 	PositionData* rectPositionData = rectObj2->getData<PositionData>("PositionData");
@@ -175,10 +188,12 @@ void CollisionDetectionManager::circleBoxCollision(GameObject* circleObj1, GameO
 	}
 }
 
+// Collision handling between two boxes
 void CollisionDetectionManager::boxBoxCollision(GameObject* obj1, GameObject* obj2, CollisionData* collisionData1, CollisionData* collisionData2){
 
 }
 
+// returns false if any collision dont have a physical collider
 bool CollisionDetectionManager::isPhysicalColliders(CollisionData* collisionData1, CollisionData* collisionData2){
 	if (!collisionData1->getIsPhysicalCollider() || !collisionData2->getIsPhysicalCollider())
 		return false;

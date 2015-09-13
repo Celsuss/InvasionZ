@@ -1,5 +1,10 @@
+/*
+	Handels the games rendering, also holds the window.
+	Singelton pattern
+*/
+
 #pragma once
-#include "SFML\Graphics.hpp"
+#include "SFML/Graphics.hpp"
 
 class TextData;
 class ShapeData;

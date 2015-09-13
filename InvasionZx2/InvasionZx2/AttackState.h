@@ -12,6 +12,7 @@ public:
 	virtual void enterState();
 	virtual void exitState();
 private:
+	bool inRange(float length);
 	void move(GameObject* gameObject, sf::Vector2f deltaPos);
 	void stopMoving(GameObject* gameObject);
 };

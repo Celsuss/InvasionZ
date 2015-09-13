@@ -1,3 +1,7 @@
+/*
+	Holds movement data
+*/
+
 #include "MovementData.h"
 
 MovementData::MovementData(float movementSpeed){

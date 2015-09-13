@@ -1,3 +1,7 @@
+/*
+	Holds shape data
+*/
+
 #include "ShapeData.h"
 #include "PositionData.h"
 #include "MovementData.h"

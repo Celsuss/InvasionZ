@@ -1,3 +1,7 @@
+/*
+	A game state, a playable level where the player can control the Player object
+*/
+
 #include "Level.h"
 #include "CollisionDetectionManager.h"
 #include "GraphicManager.h"
@@ -133,5 +137,4 @@ void Level::destroyDeadObjects(){
 		else
 			i++;
 	}
-	int k = 0;
 }

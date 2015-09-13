@@ -1,3 +1,8 @@
+/*
+	Handels the games rendering, also holds the window.
+	Singelton pattern
+*/
+
 #include "GraphicManager.h"
 #include "ParticleEffectData.h"
 #include "VertexArrayData.h"
@@ -5,21 +10,25 @@
 #include "ShapeData.h"
 #include "TextData.h"
 
+// Singelton variable, the object instance
 GraphicManager* GraphicManager::m_Instance = new GraphicManager();
 
 GraphicManager::GraphicManager(){}
 
 GraphicManager::~GraphicManager(){}
 
+// Singelton method, returns the object instance
 GraphicManager* GraphicManager::getInstance(){
 	return m_Instance;
 }
 
+// Initialize the window
 void GraphicManager::initialize(){
 	getInstance()->m_Window.create(sf::VideoMode(1200, 900), "InvasionZx2");
 	getInstance()->m_Window.setFramerateLimit(60);		//Set max fps tp 60
 }
 
+// Render all drawable objects
 void GraphicManager::update(){
 	drawBackGround();
 	drawNormalGround();
@@ -29,6 +38,7 @@ void GraphicManager::update(){
 	getInstance()->m_Window.clear();
 }
 
+// Draw a sprite
 void GraphicManager::draw(SpriteData* spriteData){
 	switch (*spriteData->getLayer()){
 	case SpriteData::Background:
@@ -43,6 +53,7 @@ void GraphicManager::draw(SpriteData* spriteData){
 	}	
 }
 
+// Draw a shape
 void GraphicManager::draw(ShapeData* shapeData){
 	switch (*shapeData->getLayer()){
 	case ShapeData::Background:
@@ -57,6 +68,7 @@ void GraphicManager::draw(ShapeData* shapeData){
 	}
 }
 
+// Draw a vertex array
 void GraphicManager::draw(VertexArrayData* vertexData){
 	switch (*vertexData->getLayer()){
 	case VertexArrayData::Background:
@@ -71,6 +83,7 @@ void GraphicManager::draw(VertexArrayData* vertexData){
 	}
 }
 
+// Draw text
 void GraphicManager::draw(TextData* textData){
 	switch (*textData->getLayer()){
 	case TextData::Background:

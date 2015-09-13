@@ -1,3 +1,7 @@
+/*
+	Holds ammunition data
+*/
+
 #include "AmmoData.h"
 
 AmmoData::AmmoData(){

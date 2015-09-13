@@ -1,3 +1,7 @@
+/*
+	Base class for all the diferent game states.
+*/
+
 #pragma once
 
 class GameState{

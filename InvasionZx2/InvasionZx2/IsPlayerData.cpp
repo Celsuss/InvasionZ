@@ -1,3 +1,7 @@
+/*
+	Holds is player data
+*/
+
 #include "IsPlayerData.h"
 
 IsPlayerData::IsPlayerData(){

@@ -1,3 +1,8 @@
+/*
+Rotate the gameobjects moving direction and sprite towards the mouse cursor
+Data needed: SpriteData MovementData
+*/
+
 #pragma once
 #include "Component.h"
 

@@ -1,3 +1,7 @@
+/*
+	A game state, a playable level where the player can control the Player object
+*/
+
 #pragma once
 #include <vector>
 #include "GameState.h"

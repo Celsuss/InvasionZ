@@ -1,3 +1,7 @@
+/*
+	Holds particle effect data
+*/
+
 #pragma once
 #include "Data.h"
 #include "SFML/Graphics/Sprite.hpp"

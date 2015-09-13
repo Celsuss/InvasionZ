@@ -1,3 +1,7 @@
+/*
+	Read input, return true if a key is pressed
+*/
+
 #include "SFML/Window/Keyboard.hpp"
 #include "SFML/Window/Mouse.hpp"
 #include "InputManager.h"

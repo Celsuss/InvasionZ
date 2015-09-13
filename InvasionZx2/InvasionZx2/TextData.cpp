@@ -1,3 +1,7 @@
+/*
+	Holds text data
+*/
+
 #include "TextData.h"
 #include "GraphicManager.h"
 #include "Shared.h"

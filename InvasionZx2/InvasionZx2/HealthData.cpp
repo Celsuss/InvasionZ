@@ -1,3 +1,7 @@
+/*
+	Holds health data
+*/
+
 #include "HealthData.h"
 
 HealthData::HealthData(float health){

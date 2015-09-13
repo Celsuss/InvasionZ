@@ -1,3 +1,7 @@
+/*
+	Holds collision data
+*/
+
 #pragma once
 #include "Data.h"
 class CollisionData : public Data{

@@ -1,3 +1,7 @@
+/*
+	Holds damage data
+*/
+
 #include "DamageData.h"
 
 DamageData::DamageData(float damage){

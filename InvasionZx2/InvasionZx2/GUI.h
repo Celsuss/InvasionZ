@@ -1,3 +1,8 @@
+/*
+	Handels all the games GUI
+	Singelton pattern
+*/
+
 #pragma once
 #include "SFML/System/Vector2.hpp"
 #include "SFML/System/Clock.hpp"
@@ -5,6 +10,7 @@
 #include <vector>
 
 class TextData;
+class AmmoData;
 class SpriteData;
 class PositionData;
 
@@ -14,18 +20,18 @@ public:
 
 	static void initialize();
 	static void update();
-	static void setequippedWeapon(std::string name);
+	static void setEquippedWeapon(std::string name);
 private:
 	GUI();
 	~GUI();
 	static GUI* m_Instance;
 
 	static void draw();
-	static void updateWeaponSprite();
-	static void updateAmmoText(std::string weapon);
+	static void updateWeaponBoxes();
+	static void updateAmmoText(std::string weapon, AmmoData* ammoData);
 
 	static void initializeWeaponBoxes(sf::Vector2f* pos);
-	static void initializeGun(std::string name);
+	static void initializeWeapon(std::string name);
 	static void initializeBoxBoarder();
 
 	static void createSortedVectors();

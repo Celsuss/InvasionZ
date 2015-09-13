@@ -1,3 +1,7 @@
+/*
+	Holds ammunition data
+*/
+
 #pragma once
 #include "Data.h"
 #include <string>

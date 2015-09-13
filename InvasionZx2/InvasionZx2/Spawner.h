@@ -1,3 +1,9 @@
+/*
+	Spawner gameobject, spawns zombies at it's location after set amount of time
+	Components used: SpawnerComponent
+	Data used: PositionData, SpriteData
+*/
+
 #pragma once
 #include "GameObject.h"
 

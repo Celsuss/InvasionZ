@@ -1,3 +1,7 @@
+/*
+	Holds weapon data
+*/
+
 #pragma once
 #include "Data.h"
 #include "Weapon.h"

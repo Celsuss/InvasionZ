@@ -1,3 +1,7 @@
+/*
+	Holds health data
+*/
+
 #pragma once
 #include "Data.h"
 

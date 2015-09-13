@@ -1,3 +1,9 @@
+/*
+	Trail gameobject, a trail for the zombie AI to help find the player. Despawns after a set amount of time
+	Components used: KillAfterTimeComponent
+	Data used: PositionData, SpriteData
+*/
+
 #include "Trail.h"
 #include "KillAfterTimeComponent.h"
 #include "GraphicManager.h"

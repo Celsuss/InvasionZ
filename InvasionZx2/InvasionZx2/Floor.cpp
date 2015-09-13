@@ -1,3 +1,9 @@
+/*
+	Floor object, only a decorative gameobject
+	Components used:
+	Data used: SpriteData
+*/
+
 #include "Floor.h"
 #include "CollisionData.h"
 #include "GraphicManager.h"

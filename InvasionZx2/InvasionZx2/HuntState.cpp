@@ -32,7 +32,7 @@ void HuntState::exitState(){}
 void HuntState::move(GameObject* gameObject){
 	sf::Vector2f pos1 = *gameObject->getData<PositionData>("PositionData")->getPosition();
 	sf::Vector2f pos2 = *EntityFactory::getPlayer()->getData<PositionData>("PositionData")->getPosition();
-	m_TargetPos = Pathfinder::findPath(pos1, pos2);
+	m_TargetPos = *Pathfinder::findPath(pos1, pos2).back();
 
 	sf::Vector2f move = Shared::normalizeVector(m_TargetPos - pos1);
 

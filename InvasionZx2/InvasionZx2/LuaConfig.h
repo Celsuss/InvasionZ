@@ -1,3 +1,7 @@
+/*
+	Read lua files
+*/
+
 #pragma once
 #include <string>
 #include "lua.hpp"

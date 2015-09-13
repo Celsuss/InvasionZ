@@ -1,3 +1,7 @@
+/*
+	Holds vertex array data
+*/
+
 #include "VertexArrayData.h"
 #include "GraphicManager.h"
 

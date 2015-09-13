@@ -261,9 +261,6 @@
     <ClCompile Include="ChangeWeaponComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="RotateToDirectionComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
     <ClCompile Include="HealthPotion.cpp">
       <Filter>Source Files\Items</Filter>
     </ClCompile>
@@ -395,6 +392,9 @@
     </ClCompile>
     <ClCompile Include="Pathfinder.cpp">
       <Filter>Source Files\AI Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateComponent.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -566,9 +566,6 @@
     <ClInclude Include="ChangeWeaponComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="RotateToDirectionComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="HealthPotion.h">
       <Filter>Header Files\Items</Filter>
     </ClInclude>
@@ -679,6 +676,9 @@
     </ClInclude>
     <ClInclude Include="Pathfinder.h">
       <Filter>Header Files\AI Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,3 +1,8 @@
+/*
+	Kills the gameobject after a set amount of time
+	Data needed:
+*/
+
 #include "KillAfterTimeComponent.h"
 #include "GameObject.h"
 

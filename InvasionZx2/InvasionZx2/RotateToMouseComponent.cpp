@@ -1,3 +1,8 @@
+/*
+	Rotate the gameobjects moving direction and sprite towards the mouse cursor
+	Data needed: SpriteData MovementData
+*/
+
 #include "RotateToMouseComponent.h"
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Window/Mouse.hpp"
@@ -21,6 +26,7 @@ void RotateToMouseComponent::update(GameObject* gameObject){
 	rotateMovement();
 }
 
+//Rotate the sprite towards the gameobjects direction
 void RotateToMouseComponent::rotateSprite(){
 	sf::Vector2f pos1 = m_SpriteData->getSprite()->getPosition();
 
@@ -33,6 +39,7 @@ void RotateToMouseComponent::rotateSprite(){
 	m_SpriteData->getSprite()->setRotation(angle);
 }
 
+//Rotate the gameobjects moving direction
 void RotateToMouseComponent::rotateMovement(){
 	sf::Vector2f pos1 = m_SpriteData->getSprite()->getPosition();
 	sf::Vector2f pos2 = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*GraphicManager::getWindow()));

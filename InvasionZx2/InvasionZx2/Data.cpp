@@ -1,3 +1,7 @@
+/*
+	Data about gameobjects
+*/
+
 #include "Data.h"
 
 Data::Data(){}

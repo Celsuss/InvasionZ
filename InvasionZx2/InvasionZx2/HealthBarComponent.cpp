@@ -1,3 +1,8 @@
+/*
+	Draws gameobjects health bars
+	Data needed: HealthData, PositionData
+*/
+
 #include "HealthBarComponent.h"
 #include "SFML/Graphics/Shape.hpp"
 #include "GraphicManager.h"
@@ -51,6 +56,7 @@ void HealthBarComponent::update(GameObject* gameObject){
 	drawHealthBar(gameObject);
 }
 
+//Checks if the gameobject is alive, if false then kill gameobject
 bool HealthBarComponent::checkIfAlive(GameObject* gameObject){
 	float health = *m_HealthData->getHealth();
 	if (health <= 0){
@@ -63,6 +69,7 @@ bool HealthBarComponent::checkIfAlive(GameObject* gameObject){
 	return true;
 }
 
+//Sets the position of the gameobject
 void HealthBarComponent::setPosition(GameObject* gameObject){
 	sf::Vector2f pos = *m_PositionData->getPosition();
 	pos.y += healthBarPosOffset;
@@ -73,6 +80,7 @@ void HealthBarComponent::setPosition(GameObject* gameObject){
 	m_HealthBarShape->getShape()->setPosition(pos);
 }
 
+//Update the size of the health bar
 void HealthBarComponent::updateHealthBar(GameObject* gameObject){
 	float health = *m_HealthData->getHealth();
 	float maxHealth = *m_HealthData->getMaxHealth();
@@ -83,6 +91,7 @@ void HealthBarComponent::updateHealthBar(GameObject* gameObject){
 	updateHealthBarColor(healthPercentages);
 }
 
+//Update the color of the health bar
 void HealthBarComponent::updateHealthBarColor(float healthPercentages){
 	if (healthPercentages <= 33)
 		m_HealthBarShape->getShape()->setFillColor(sf::Color::Red);
@@ -92,6 +101,7 @@ void HealthBarComponent::updateHealthBarColor(float healthPercentages){
 		m_HealthBarShape->getShape()->setFillColor(sf::Color::Green);
 }
 
+//Draw the health bar
 void HealthBarComponent::drawHealthBar(GameObject* gameObject){
 	float health = *m_HealthData->getHealth();
 	float maxHealth = *m_HealthData->getMaxHealth();

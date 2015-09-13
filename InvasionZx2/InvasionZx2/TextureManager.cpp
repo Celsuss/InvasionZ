@@ -1,3 +1,7 @@
+/*
+	Holds all the textures used in the game
+*/
+
 #include "TextureManager.h"
 
 TextureManager* TextureManager::m_Instance = new TextureManager();

@@ -1,3 +1,7 @@
+/*
+	Holds sprite data
+*/
+
 #pragma once
 #include "DrawableData.h"
 #include "SFML/Graphics/Sprite.hpp"

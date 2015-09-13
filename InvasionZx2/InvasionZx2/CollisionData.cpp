@@ -1,3 +1,7 @@
+/*
+	Holds collision data
+*/
+
 #include "CollisionData.h"
 
 CollisionData::CollisionData(CollisionShape shape, bool isPhysicalCollider){

@@ -1,3 +1,7 @@
+/*
+	Holds damage data
+*/
+
 #pragma once
 #include "Data.h"
 

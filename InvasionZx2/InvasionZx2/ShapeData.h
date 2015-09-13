@@ -1,3 +1,7 @@
+/*
+	Holds shape data
+*/
+
 #pragma once
 #include "Data.h"
 #include "SFML/Graphics/RectangleShape.hpp"

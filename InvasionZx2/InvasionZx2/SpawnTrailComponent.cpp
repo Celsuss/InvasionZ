@@ -1,3 +1,8 @@
+/*
+	Spawn a trail gameobject at the gameobjects position after a set amount of time
+	Data needed: PositionData
+*/
+
 #include "SpawnTrailComponent.h"
 #include "EntityFactory.h"
 #include "Level.h"

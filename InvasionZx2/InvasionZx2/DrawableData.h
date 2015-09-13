@@ -1,3 +1,7 @@
+/*
+	Data about drawable
+*/
+
 #pragma once
 #include "Data.h"
 

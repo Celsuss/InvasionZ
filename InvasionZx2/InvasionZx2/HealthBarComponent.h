@@ -1,3 +1,8 @@
+/*
+	Draws gameobjects health bars
+	Data needed: HealthData, PositionData
+*/
+
 #pragma once
 #include "Component.h"
 #include "SFML/Graphics/RectangleShape.hpp"

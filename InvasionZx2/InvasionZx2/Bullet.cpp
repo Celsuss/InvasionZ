@@ -1,3 +1,9 @@
+/*
+	Bullet object, spawns when the player uses a weapon and shoot
+	Components used: MoveComponent
+	Data used: IsWeaponData, MovementData, PositionData, CollisionData, DamageData
+*/
+
 #include "Bullet.h"
 #include "GraphicManager.h"
 #include "MoveComponent.h"

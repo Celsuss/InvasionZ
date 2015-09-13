@@ -1,3 +1,8 @@
+/*
+	Collision detection and handeling
+	Singelton pattern
+*/
+
 #pragma once
 #include "CollisionData.h"
 #include <vector>

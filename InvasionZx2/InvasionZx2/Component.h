@@ -1,3 +1,7 @@
+/*
+	Components for gameobjects
+*/
+
 #pragma once
 #include <string>
 

@@ -1,3 +1,7 @@
+/*
+	Holds text data
+*/
+
 #pragma once
 #include "Data.h"
 #include "SFML/Graphics/Text.hpp"

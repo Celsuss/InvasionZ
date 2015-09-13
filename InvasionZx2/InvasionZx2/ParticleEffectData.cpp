@@ -1,3 +1,7 @@
+/*
+	Holds particle effect data
+*/
+
 #include "ParticleEffectData.h"
 #include "GraphicManager.h"
 #include "PositionData.h"

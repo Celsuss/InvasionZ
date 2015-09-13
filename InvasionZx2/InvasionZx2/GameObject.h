@@ -1,3 +1,8 @@
+/*
+	Base class for all game objects such as Player, Zombie, Bullet, Floor
+	All game objects are built using the Component and Data classes
+*/
+
 #pragma once
 #include <map>
 #include <vector>
@@ -47,14 +52,9 @@ public:
 	virtual bool getIsAlive() const;
 	virtual Type getType() const;
 	
+	//Returns a component of the type c and name name
 	template<typename c>
 	c* getComponent(std::string name){
-		/*for (auto i = m_ComponentVector.begin(); i != m_ComponentVector.end(); i++){
-			if ((*i)->getName() == name){
-				return static_cast<c*>(*i);
-			}
-		}*/
-
 		Component* component = m_ComponentMap[name].get();
 		if (component != nullptr)
 			return static_cast<c*>(component);
@@ -64,14 +64,9 @@ public:
 		return nullptr;
 	}
 
+	//Returns a data of the type c and name name
 	template<typename d>
 	d* getData(std::string name){
-		/*for (auto i = m_DataVector.begin(); i != m_DataVector.end(); i++){
-			if ((*i)->getName() == name){
-				return static_cast<d*>(*i);
-			}
-		}*/
-
 		Data* data = m_DataMap[name].get();
 		if (data != nullptr)
 			return static_cast<d*>(data);

@@ -1,3 +1,7 @@
+/*
+	Holds item data
+*/
+
 #pragma once
 #include "Data.h"
 

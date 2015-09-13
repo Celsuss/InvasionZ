@@ -1,10 +1,7 @@
-﻿Build started 2015-09-14 00:38:59.
-     1>Project "C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\InvasionZx2\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GUI.cpp
-         GUI.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\Debug\InvasionZx2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\InvasionZx2\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\Debug\InvasionZx2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\Debug\InvasionZx2.lib" /MACHINE:X86 Debug\AIState.obj
+﻿Build started 2015-09-14 01:23:51.
+     1>Project "C:\Users\Tess\Documents\GitHub\InvasionZ\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tess\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Tess\Documents\GitHub\InvasionZ\InvasionZx2\\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Tess\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tess\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.lib" /MACHINE:X86 Debug\AIState.obj
          Debug\AIStateComponent.obj
          Debug\AmmoData.obj
          Debug\AttackState.obj
@@ -106,9 +103,9 @@
          Debug\Weapon.obj
          Debug\WeaponData.obj
          Debug\Zombie.obj
-         InvasionZx2.vcxproj -> C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\Debug\InvasionZx2.exe
-     1>Done Building Project "C:\Users\Tess\Documents\Visual Studio 2013\Projects\InvasionZ\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" (Build target(s)).
+         InvasionZx2.vcxproj -> C:\Users\Tess\Documents\GitHub\InvasionZ\InvasionZx2\Debug\InvasionZx2.exe
+     1>Done Building Project "C:\Users\Tess\Documents\GitHub\InvasionZ\InvasionZx2\InvasionZx2\InvasionZx2.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.74
+Time Elapsed 00:00:03.55
